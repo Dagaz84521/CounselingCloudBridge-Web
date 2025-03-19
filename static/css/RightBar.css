@@ -1,0 +1,259 @@
+.RightBar {
+    margin-left: 210px;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-right: 1.5rem;
+}
+
+.infoBar {
+    margin-left: 5%;
+    min-width: 120px;
+}
+
+.navBar {
+    height: 6%;
+    display: flex;
+    align-items: center;
+    border: 0 2%;
+}
+
+.contentBar {
+    flex-direction: column;
+    display: flex;
+    height:100%;
+    min-height: 100%;
+    background-color: #f5f7fa;
+}
+
+h2{
+    font-size: 1.4rem;
+}
+
+.statusBar {
+    flex-direction: column;
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+
+
+    margin-bottom: 30px;
+    width:55%;
+}
+
+/* 咨询师状态卡片 */
+.counselorStatusCard {
+    display: flex;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.counselorStatus {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width:80%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-right: 20px;
+}
+
+/* 累计咨询数卡片 */
+.completedcounsel {
+    background-color: rgb(92, 92, 92);
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:20%;
+}
+
+.completedcounsel::before {
+    content: "累计完成咨询";
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.completedcounsel::after {
+    content: "12353";
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+/* 状态卡片容器 */
+.currentStatusCard {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    min-width: 400px;
+}
+
+.currentStatus {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+}
+
+.currentStatus::after {
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #4a9cff;
+    margin-top: 10px;
+    
+}
+
+.currentStatus:nth-child(1)::after {
+    content: "35";
+}
+
+.currentStatus:nth-child(2)::after {
+    content: "6:12:30";
+}
+
+.currentStatus:nth-child(3)::after {
+    content: "2";
+}
+
+/* 状态标签样式 */
+.currentStatus span {
+    display: block;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* 在线状态指示 */
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #00c853;
+    margin-right: 8px;
+}
+
+/* 头像容器 */
+.profile-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar-container {
+    position: relative;
+    margin-right: 15px;
+}
+
+.counselor-avatar {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    border: 2px solid #e0e0e0;
+}
+
+/* 在线状态指示 */
+.online-status {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 14px;
+    height: 14px;
+    background: #4CAF50;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+/* 状态文字 */
+.status-info{
+    margin-right: 20px;
+}
+
+.status-tag {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #4CAF50;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-text {
+    font-weight: 500;
+    color: #333;
+}
+
+.status-subtext {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* 星级评分 */
+.rating-section {
+    margin-bottom: 20px;
+}
+
+.rating-title {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.star-rating {
+    display: flex;
+    gap: 4px;
+}
+
+.star {
+    color: #e0e0e0;
+    font-size: 1.4em;
+}
+
+.star.active {
+    color: #FFC107;
+}
+
+/* 设置按钮 */
+.setting-button {
+    background: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.setting-button:hover {
+    background: #1976D2;
+}
+
+.setting-button i {
+    margin-right: 8px;
+}

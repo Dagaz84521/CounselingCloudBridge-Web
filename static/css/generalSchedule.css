@@ -1,0 +1,178 @@
+.ScheduleBar {
+    padding-left: 15px;
+    padding-right: 15px;
+    width:75%;
+    height:85vh;
+    margin-bottom: 30px;
+    background-color: #f5f7fa;
+}
+
+.ScheduleContent{
+    background-color: #ffffff;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height:82vh;
+}
+
+.schedule-header {
+    margin-bottom: 15px;
+}
+
+.schedule-title {
+    color: #181d1a;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.schedule-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    background: #eeeeee;
+    padding: 2px;
+    border-radius: 8px;
+}
+
+.day-header {
+    background: #fafafa;
+    color: rgb(97, 97, 97);
+    padding: 12px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.day-cell {
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    min-height: 70px;
+    position: relative;
+}
+
+
+
+.day-number {
+    color: #7e7e7e;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+
+.staff-info{
+    text-align: left;
+    margin-left: 30px;;
+}
+
+
+
+/* 右侧状态列表 */
+.status-list {
+    flex: 1;
+    border-left: 1px solid #ddd;
+    padding: 0 20px;
+    background-color: #ffffff;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+
+.currentDate{
+    text-align:center;
+    font-size: 25px;
+    margin:15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.staff-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* 状态按钮 */
+.status-btn {
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-left: auto;
+    background-color: Transparent; 
+    border-style: none; 
+}
+.remove { background: #ffebee; color: #c62828; }
+.online { background: #e8f5e9; color: #2e7d32; }
+
+.option_container {
+    display: flex;
+    overflow-y: auto;
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.option_div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.option_content {
+    text-align: center;
+    width: 50%;
+    color: rgb(44, 44, 44);
+    cursor: pointer;
+    font-size: 20px;
+    min-height: 25px;
+}
+
+.option_content-activate {
+    position: relative;
+    text-align: center;
+    width: 50%;
+    color: rgb(44, 44, 44);
+    cursor: pointer;
+    font-size: 20px;
+    min-height: 25px;
+}
+
+.option_content-activate::after {
+    content: "";
+    position: absolute;
+    left:50%;
+    bottom: -5px;
+    text-align: center;
+    transform: translateX(-50%);
+    width: 75%;
+    height:3px;
+    background: rgb(19,171,166);
+    cursor: pointer;
+}
+
+.add_operation{
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    min-height: 25px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.staff-avatar{
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    min-height: 45px;
+    border-radius: 45%;
+    background-color: #fff;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.1); 
+    margin-right: 20px;
+}

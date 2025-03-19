@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>心理咨询师工作台</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/LeftBar.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/RightBar.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/Counsel.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/Modal.css">
+</head>
+
+<body style="display: flex;">
+    <div class="page" style="height:100%;width:100vw">
+        <!-- 左侧信息栏 -->
+        <div class="leftBar">
+            <!-- 咨询师信息 -->
+            <div class="counselorBar">
+                <div class="counselor-info">
+                    <div class="avatar"></div>
+                    <div class="infoBar">
+                        <h3 style="color: #2d4059; font-size: 1.1em;">咨询师</h3>
+                        <p style="color: #677489; font-size: 0.9em;">专业心理咨询</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 导航菜单 -->
+            <div class="nav-menu">
+                <div class="nav-item">
+                    <img src="../../static/image/homepageGrey.png">
+                    <a href="base.html" class="nav-link">
+                        <span class="leftOption" id="Option_bed_information">首页</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <img src="../../static/image/logGrey.png">
+                    <a href="history.html" class="nav-link">
+                        <span class="leftOption" id="Option_bed_information">咨询记录</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- 会话列表 -->
+            <div class="session-list">
+                <span>会话列表</span>
+                <div class="user-item-activate">
+                    <span>张先生</span>
+                    <span class="badge">2</span>
+                </div>
+                <div class="user-item">
+                    <span>周小姐</span>
+                    <i class="fas fa-question-circle" style="color: #677489;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="RightBar">
+            <!-- 上方导航栏 -->
+            <div class="navBar">
+                <div class="logo"></div>
+                <h2>Counseling Cloud Bridge</h2>
+            </div>
+            <div class="contentBar">
+                <div class="chat-container">
+
+                    <!-- 用户信息栏 -->
+                    <div class="user-info">
+                        <div class="info-section">
+                            <div class="user-avatar">
+                                <img alt="用户头像">
+                                <div class="online-dot"></div>
+                            </div>
+                            <div class="user-details">
+                                <div class="user-meta">
+                                    <div class="user-name">张先生</div>
+                                    <div class="user-phone">157665***89</div>
+                                </div>
+                                <div class="consult-status">
+                                    <span class="status-icon">●</span>
+                                    正在咨询中
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="counsult-records">
+
+                            <h2>咨询记录</h2>
+                            <div class="consult-duration">
+                                <h3>总共用时</h3>
+                                <span>00:13:13</span>
+                            </div>
+
+                            <div class="consult-evaluations">
+                                <div class="client-evaluation">
+                                    <h3>咨询者评价</h3>
+                                    <div class="star-rating">★★★★★</div>
+                                    <span class="rating-text">很棒的咨询师!</span>
+                                </div>
+                                <div class="client-evaluation">
+                                    <h3>咨询师评价</h3>
+                                    <div class="expertise-type">心理咨询</div>
+                                    <span class="rating-text">很棒的咨询师!</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn">请求督导</button>
+                            <button class="btn">结束咨询</button>
+                        </div>
+                    </div>
+
+                    <!-- 聊天内容区域 -->
+                    <div class="chat-content">
+                        <div class="chat-messages" id="messageContainer">
+                            <!-- 消息示例 -->
+                            <div class="message-line">
+                                <div class="message-avatar">
+                                    <img src="texture.png" alt="用户头像">
+                                </div>
+                                <div class="message user-message">
+                                    <div>您好，请问您有什么需要咨询的内容？</div>
+                                    <span class="timestamp">2023/12/01 10:00:00</span>
+                                </div>
+                            </div>
+                            <div class="message-line">
+
+                                <div class="message system-message">
+                                    <div>您好，请问您有什么需要咨询的内容？</div>
+                                    <span class="timestamp">2023/12/01 10:00:00</span>
+                                </div>
+                                <div class="message-avatar">
+                                    <img alt="用户头像">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-tools">
+                            <div><img src="image/mic.png"> </div>
+                            <div><img src="image/moji.png"> </div>
+                            <div><img src="image/album.png"> </div>
+                        </div>
+
+                        <div class="chat-footer">
+                            <textarea class="message-input" placeholder="输入消息..." id="messageInput" rows="1"></textarea>
+                            <button class="send-button" id="sendButton">
+                                <span>发送</span>
+                                <svg viewBox="0 0 24 24" width="18" height="18">
+                                    <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="supervisor-content">
+                        <div class="supervisor-section">
+                            <div class="supervisor-avatar">
+                                <img alt="用户头像">
+                                <div class="online-dot"></div>
+                            </div>
+                            <div class="supervisor-details">
+                                <div class="supervisor-meta">
+                                    <div class="supervisor-status">督导</div>
+                                    <div class="supervisor-status">正在求助</div>
+                                </div>
+                                <div class="consult-status">
+                                    <span class="status-icon">咨询用时:</span>
+                                    00：12：13
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-messages" id="messageContainer">
+                            <!-- 消息示例 -->
+                            <div class="message-line">
+                                <div class="message-avatar">
+                                    <img src="texture.png" alt="用户头像">
+                                </div>
+                                <div class="message user-message">
+                                    <div>您好，请问您有什么需要咨询的内容？</div>
+                                    <span class="timestamp">2023/12/01 10:00:00</span>
+                                </div>
+                            </div>
+                            <div class="message-line">
+
+                                <div class="message system-message">
+                                    <div>您好，请问您有什么需要咨询的内容？</div>
+                                    <span class="timestamp">2023/12/01 10:00:00</span>
+                                </div>
+                                <div class="message-avatar">
+                                    <img alt="用户头像">
+                                </div>
+                            </div>
+
+                            
+                        </div>
+
+                        <div class="chat-footer">
+                            <textarea class="message-input" placeholder="输入消息..." id="messageInput" rows="1"></textarea>
+                            <button class="send-button" id="sendButton">
+                                <span>发送</span>
+                                <svg viewBox="0 0 24 24" width="18" height="18">
+                                    <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container" style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">本次咨询已结束，请评价</h2>
+            <div class="modal-subtitle">为这次心理咨询做出评价</div>
+
+            <div class="modal-line">咨询类型</div>
+            <input class="modal-input">
+
+            <div class="modal-line">评价</div>
+            <textarea class="modal-textarea" placeholder="输入消息..." id="messageInput" rows="1"></textarea>
+
+            <div class="modal-button-line">
+                <button class="modal-btn">确定</button>
+                <button class="modal-btn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container"  style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">咨询记录</h2>
+            <div class="modal-subtitle">2025/03/15</div>
+
+            <div class="consult-type">咨询类型</div>
+            <div class="consult-line">患者得了MVP</div>
+
+            <div class="modal-chat-historys">
+                <div class="modal-chat-history-line">
+                    <div class="message-avatar">
+                        <img alt="用户头像">
+                    </div>
+                    <div class="modal-message-line">
+                        <div class="modal-message-line-info">
+                            <div class="modal-message-line-character">用户</div>
+                            <div class="modal-message-line-timestamp">2025/03/15 11:45:14</div>
+                        </div>
+                        <div class="modal-message-content">采一朵花，送给妈妈</div>
+                    </div>
+                </div>
+
+                <div class="modal-chat-history-line">
+                    <div class="message-avatar">
+                        <img alt="用户头像">
+                    </div>
+                    <div class="modal-message-line">
+                        <div class="modal-message-line-info">
+                            <div class="modal-message-line-character">用户</div>
+                            <div class="modal-message-line-timestamp">2025/03/15 11:45:14</div>
+                        </div>
+                        <div class="modal-message-content">妈妈妈妈，你看有花</div>
+                    </div>
+                </div>
+
+                <div class="modal-chat-history-line">
+                    <div class="message-avatar">
+                        <img alt="用户头像">
+                    </div>
+                    <div class="modal-message-line">
+                        <div class="modal-message-line-info">
+                            <div class="modal-message-line-character">咨询师</div>
+                            <div class="modal-message-line-timestamp">2025/03/15 11:45:14</div>
+                        </div>
+                        <div class="modal-message-content">作业写完没有！</div>
+                    </div>
+                </div>
+
+                <div class="modal-chat-history-line">
+                    <div class="message-avatar">
+                        <img alt="用户头像">
+                    </div>
+                    <div class="modal-message-line">
+                        <div class="modal-message-line-info">
+                            <div class="modal-message-line-character">用户</div>
+                            <div class="modal-message-line-timestamp">2025/03/15 11:45:14</div>
+                        </div>
+                        <div class="modal-message-content">啊哈啊哈</div>
+                    </div>
+                </div>
+
+                <div class="modal-chat-history-line">
+                    <div class="message-avatar">
+                        <img alt="用户头像">
+                    </div>
+                    <div class="modal-message-line">
+                        <div class="modal-message-line-info">
+                            <div class="modal-message-line-character">用户</div>
+                            <div class="modal-message-line-timestamp">2025/03/15 11:45:14</div>
+                        </div>
+                        <div class="modal-message-content">今天不送妈妈，送给爸爸</div>
+                    </div>
+                </div>
+
+                <div class="modal-chat-history-line">
+                    <div class="message-avatar">
+                        <img alt="用户头像">
+                    </div>
+                    <div class="modal-message-line">
+                        <div class="modal-message-line-info">
+                            <div class="modal-message-line-character">用户</div>
+                            <div class="modal-message-line-timestamp">2025/03/15 11:45:14</div>
+                        </div>
+                        <div class="modal-message-content">爸爸爸爸，这个月赚好多米啊</div>
+                    </div>
+                </div>
+
+                <div class="modal-chat-history-line">
+                    <div class="message-avatar">
+                        <img alt="用户头像">
+                    </div>
+                    <div class="modal-message-line">
+                        <div class="modal-message-line-info">
+                            <div class="modal-message-line-character">用户</div>
+                            <div class="modal-message-line-timestamp">2025/03/15 11:45:14</div>
+                        </div>
+                        <div class="modal-message-content">MVPMVP，能不能多点米给我花呢</div>
+                    </div>
+                </div>
+
+                <div class="modal-chat-history-line">
+                    <div class="message-avatar">
+                        <img alt="用户头像">
+                    </div>
+                    <div class="modal-message-line">
+                        <div class="modal-message-line-info">
+                            <div class="modal-message-line-character">咨询师</div>
+                            <div class="modal-message-line-timestamp">2025/03/15 11:45:14</div>
+                        </div>
+                        <div class="modal-message-content">工作找到没有！</div>
+                    </div>
+                </div>
+
+                <div class="modal-chat-history-line">
+                    <div class="message-avatar">
+                        <img alt="用户头像">
+                    </div>
+                    <div class="modal-message-line">
+                        <div class="modal-message-line-info">
+                            <div class="modal-message-line-character">用户</div>
+                            <div class="modal-message-line-timestamp">2025/03/15 11:45:14</div>
+                        </div>
+                        <div class="modal-message-content">啊哈啊哈</div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="modal-button-line">
+                <button class="modal-btn">确定</button>
+                <button class="modal-btn">取消</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
