@@ -1,0 +1,382 @@
+/* 基础布局 */
+.chat-container {
+    display: flex;
+    height: 100%;
+    background: #fff;
+    font-family: 'Microsoft YaHei', sans-serif;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 15%;
+}
+
+.info-section {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.user-avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.user-avatar img {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    min-height: 90px;
+    max-width: 90px;
+    max-height: 90px;
+    border-radius: 50%;
+    border: 2px solid #e0e0e0;
+}
+
+.online-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background: #4CAF50;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.user-meta {
+    margin-bottom: 6px;
+}
+
+.user-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.user-phone {
+    font-size: 14px;
+    color: #666;
+
+}
+
+.counsult-records {
+    display: flex;
+    flex-direction: column;
+}
+
+.consult-duration {
+    margin-top: 4px;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.consult-duration h3 {
+    margin: 0;
+}
+
+.consult-duration span {
+    text-align: center;
+    font-size: 50px;
+
+}
+
+.consult-evaluations {
+    margin-top: 4px;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.consult-evaluations h3 {
+    margin: 0;
+}
+
+.consult-evaluations span {
+    text-align: center;
+
+}
+
+.status-group {
+    text-align: right;
+    margin-bottom: 12px;
+}
+
+.consult-status {
+    color: #4CAF50;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    background: #e8f5e9;
+    border-radius: 16px;
+}
+
+.status-icon {
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+.consult-timestamp {
+    font-size: 12px;
+    color: #999;
+    margin-top: 4px;
+}
+
+.action-buttons {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.action-buttons::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    /* 上移定位到按钮区域上方 */
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e0e0e0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    /* 添加轻微投影增强层次 */
+}
+
+.btn {
+
+    text-align: center;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 15px;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+    min-height: 80px;
+    width: 100%;
+}
+
+
+
+.icon-supervisor,
+.icon-exit {
+    margin-right: 6px;
+    font-size: 16px;
+}
+
+.star-rating {
+    color: #ffd700;
+    font-size: 2rem;
+    margin-left: 2px;
+}
+
+.rating-text {
+    color: #7e7c7c;
+    font-size: 0.9rem;
+    margin-left: 2px;
+}
+
+.client-evaluation {
+    margin-bottom: 20px;
+}
+
+.expertise-type {
+    background-color: #cfcccc;
+    font-size: 1rem;
+    width: 4rem;
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-bottom: 5px;
+}
+
+
+/* 聊天容器样式 */
+.chat-content {
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f5f7fa;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 消息展示区域 */
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: white;
+}
+
+/* 单条消息样式 */
+.message {
+    margin-bottom: 15px;
+    max-width: 70%;
+    min-width:40%;
+    padding: 12px 16px;
+    border-radius: 15px;
+    position: relative;
+}
+
+/* 系统消息 */
+.system-message {
+    background: #e3f2fd;
+    margin-left: auto;
+    border-bottom-right-radius: 3px;
+}
+
+/* 用户消息 */
+.user-message {
+    background: #f0f0f0;
+    margin-right: auto;
+    border-bottom-left-radius: 3px;
+}
+
+/* 时间戳 */
+.timestamp {
+    display: block;
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* 输入区域 */
+.chat-footer {
+    padding: 15px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+}
+
+/* 输入框 */
+.message-input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    resize: none;
+    min-height: 45px;
+}
+
+/* 发送按钮 */
+.send-button {
+    background: #2196F3;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s;
+}
+
+.send-button:hover {
+    background: #1976D2;
+}
+
+/* 消息状态指示 */
+.status-indicator {
+    color: #666;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.message-avatar{
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 50%;
+    border: 2px solid #e0e0e0;
+    margin: 0 10px;
+}
+
+.message-avatar img{
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 60px;
+    max-height: 60px;
+}
+
+.message-line{
+    display:flex
+}
+
+.chat-tools{
+    display: flex;
+}
+
+.chat-tools img{
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.supervisor-content{
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f5f7fa;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.supervisor-section {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 120px;
+    padding: 0 10px;
+}
+
+.supervisor-avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.supervisor-avatar img {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    min-height: 90px;
+    max-width: 90px;
+    max-height: 90px;
+    border-radius: 50%;
+    border: 2px solid #e0e0e0;
+}
+
+.supervisor-meta {
+    margin-bottom: 6px;
+}
+
+.supervisor-status {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+

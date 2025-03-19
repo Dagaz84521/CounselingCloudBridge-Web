@@ -1,0 +1,75 @@
+.ScheduleBar {
+
+    padding-left: 15px;
+    padding-right: 15px;
+    width:45%;
+    margin-bottom: 30px;
+    background-color: #f5f7fa;
+}
+
+.ScheduleContent{
+    background-color: #ffffff;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.schedule-header {
+    margin-bottom: 15px;
+}
+
+.schedule-title {
+    color: #181d1a;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.schedule-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    background: #eeeeee;
+    padding: 2px;
+    border-radius: 8px;
+}
+
+.day-header {
+    background: #fafafa;
+    color: rgb(97, 97, 97);
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.day-cell {
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    min-height: 20px;
+    position: relative;
+}
+
+.working-day::after {
+    content: "值班";
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: #00C853;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.day-number {
+    color: #7e7e7e;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+

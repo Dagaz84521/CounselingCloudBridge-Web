@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>心理咨询师工作台</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/LeftBar.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/RightBar.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/generalSchedule.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/Records.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/Supervisor.css">
+    <script type="text/javascript" src="../../static/js/generalSchedule.js"></script>
+</head>
+
+<body style="display: flex;">
+    <div class="page" style="height:100%;width:100vw">
+        <!-- 左侧信息栏 -->
+        <div class="leftBar">
+            <!-- 咨询师信息 -->
+            <div class="counselorBar">
+                <div class="counselor-info">
+                    <div class="avatar"></div>
+                    <div class="infoBar">
+                        <h3 style="color: #2d4059; font-size: 1.1em;">督导</h3>
+                        <p style="color: #677489; font-size: 0.9em;">专业心理咨询</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="nav-menu">
+                <div class="nav-item">
+                    <img src="../../static/image/homepageGrey.png">
+                    <span>首页</span>
+                </div>
+                <div class="nav-item">
+                    <img src="../../static/image/assistanceGrey.png">
+                    <span>求助记录</span>
+                </div>
+
+                <div class="nav-item-activate">
+                    <img src="../../static/image/scheduleGreen.png">
+                    <span>排班表</span>
+                </div>
+
+                <div class="nav-item">
+                    <img src="../../static/image/logGrey.png">
+                    <span>咨询记录</span>
+                </div>
+            </div>
+
+            <!-- 会话列表 -->
+            <div class="session-list">
+                <span>会话列表</span>
+                <div class="user-item">
+                    <span>张先生</span>
+                    <span class="badge">2</span>
+                </div>
+                <div class="user-item">
+                    <span>周小姐</span>
+                    <i class="fas fa-question-circle" style="color: #677489;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="RightBar">
+            <!-- 上方导航栏 -->
+            <div class="navBar">
+                <div class="logo"></div>
+                <h2>Counseling Cloud Bridge</h2>
+            </div>
+            <div class="contentBar" style="flex-direction:row">
+                <div class="ScheduleBar">
+                    <div class="ScheduleContent">
+                        <div class="schedule-header">
+                            <h2 class="schedule-title">2023年12月排班表</h2>
+                            <p class="schedule-subtitle">本月共31天，需值班17天</p>
+                        </div>
+                        <div class="calendar-grid">
+                            <!-- 星期标题 -->
+                            <div class="day-header">周一</div>
+                            <div class="day-header">周二</div>
+                            <div class="day-header">周三</div>
+                            <div class="day-header">周四</div>
+                            <div class="day-header">周五</div>
+                            <div class="day-header">周六</div>
+                            <div class="day-header">周日</div>
+
+                            <!-- 日期单元格 -->
+                            <div class="day-cell">
+                                <div class="day-number">1</div>
+                            </div>
+                            <div class="day-cell working-day">
+                                <div class="day-number">2</div>
+                            </div>
+                            <!-- 更多日期单元格... -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="status-list">
+                    <div class="currentDate">3月15日 周六</div>
+                    <div class="option_container">
+                        <div class="option_content-activate">咨询师</div>
+                        <div class="option_content">督导</div>
+                    </div>
+                    <div class="add_operation">添加</div>
+                    <div class="staff-item">
+                        <div class="staff-avatar"></div>
+                        <span>咨询师18</span>
+                        <button class="status-btn remove">移除</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

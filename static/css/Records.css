@@ -1,0 +1,192 @@
+/* 咨询记录模块 */
+.consultation-records {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    position: relative;
+}
+
+.records-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.records-header h3 {
+    color: #2d4059;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.view-all {
+    color: #4a9cff;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+/* 表格样式 */
+.table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr 1.5fr 2fr;
+    gap: 15px;
+    color: #666;
+    font-weight: 500;
+    padding: 12px 0;
+    border-bottom: 2px solid #f0f2f5;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr 1.5fr 2fr;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f5f7fa;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+/* 特殊字段样式 */
+.duration {
+    color: #00c853;
+    font-weight: 500;
+}
+
+.date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.star-rating {
+    color: #ffd700;
+    font-size: 1.1rem;
+}
+
+.rating-text {
+    color: #666;
+    font-size: 0.9rem;
+    margin-left: 8px;
+}
+
+/* 操作按钮 */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.view-detail {
+    background: #4a9cff;
+    color: white;
+}
+
+.export {
+    background: #e8f5e9;
+    color: #00c853;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* 容器样式 */
+.search-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 30px;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:20px;
+}
+
+/* 输入组样式 */
+.search-group {
+    width:300px;
+    position: relative;
+}
+
+/* 标签样式 */
+.search-label {
+    display: block;
+    color: #2d4059;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+/* 下拉菜单样式 */
+.search-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e4e9;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+    color: #333;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    
+}
+
+/* 日期选择器样式 */
+.date-picker {
+    position: relative;
+}
+
+.date-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e4e9;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 占位符样式 */
+::placeholder {
+    color: #9aa8b7;
+}
+
+/* 分页样式 */
+.pagination {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 5px;
+}
+
+
+
+.ellipsis {
+    padding: 0 10px;
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>心理咨询师工作台</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/LeftBar.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/Administrator.css">
+
+    <script type="text/javascript" src="../../static/js/Schedule.js"></script>
+</head>
+
+<body style="display: flex;">
+    <div class="page" style="height:100%;width:100vw">
+        <!-- 左侧信息栏 -->
+        <div class="leftBar">
+            <!-- 咨询师信息 -->
+            <div class="counselorBar">
+                <div class="counselor-info">
+                    <div class="avatar"></div>
+                    <div class="infoBar">
+                        <h3 style="color: #2d4059; font-size: 1.1em;">管理员</h3>
+                        <p style="color: #677489; font-size: 0.9em;">专业心理咨询</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 导航菜单 -->
+            <div class="nav-menu">
+                <div class="nav-item-activate">
+                    <img src="../../static/image/homepageGreen.png">
+                    <span>首页</span>
+                </div>
+
+                <div class="nav-item">
+                    <img src="../../static/image/logGrey.png">
+                    <span>咨询记录</span>
+                </div>
+
+                <div class="nav-item">
+                    <img src="../../static/image/scheduleGrey.png">
+                    <span>排班表</span>
+                </div>
+
+                <div class="nav-item">
+                    <img src="../../static/image/counselorGrey.png">
+                    <span>咨询师管理</span>
+                </div>
+
+                <div class="nav-item">
+                    <img src="../../static/image/supervisorGrey.png">
+                    <span>督导管理</span>
+                </div>
+            </div>
+
+            <!-- 会话列表 -->
+            <div class="session-list">
+                <span>会话列表</span>
+                <div class="user-item">
+                    <span>张先生</span>
+                    <span class="badge">2</span>
+                </div>
+                <div class="user-item">
+                    <span>周小姐</span>
+                    <i class="fas fa-question-circle" style="color: #677489;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="RightBar">
+            <!-- 上方导航栏 -->
+            <div class="navBar">
+                <div class="logo"></div>
+                <h2>Counseling Cloud Bridge</h2>
+            </div>
+            <div class="contentBar">
+                <div class="currentConsult">
+                    <div class="currentStatusCard">
+                        <div class="currentStatus">今日咨询数</div>
+                        <div class="currentStatus">今日咨询时长</div>
+                    </div>
+                    <div class="currentConsultLineChart">
+                        <div class="platform-header">
+                            <div class="header-title">今日咨询数量变化</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Management">
+                    <div class="counselor-consultation">
+                        <div class="platform-header">
+                            <div class="header-title">在线心理咨询师</div>
+                            <div class="supervisor-pagination">
+                                <button class="supervisor-page-button">‹</button>
+                                <button class="supervisor-page-button">1</button>
+                                <button class="supervisor-page-button">2</button>
+                                <button class="supervisor-page-button">›</button>
+                            </div>
+                        </div>
+
+                        <div class="counselor-list">
+                            <!-- 示例数据（9个咨询师） -->
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="currentCounselCarrying"></div>
+
+                    <div class="supervisor-assistance">
+                        <div class="platform-header">
+                            <div class="header-title">在线督导</div>
+                        </div>
+
+                        <div class="supervisor-list">
+                            <!-- 示例数据（9个咨询师） -->
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                            <div class="counselor-card">
+                                <div class="counselor-name">咨询师A</div>
+                                <div class="status-indicator status-available"></div>
+                                <div class="status-text">空闲</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="supervisorAssistanceCarrying"></div>
+                </div>
+                <div class="statisticData">
+                    <div class="sevendaysData">
+                        <div class="platform-header">
+                            <div class="header-title">7日咨询数量统计</div>
+                        </div>
+                    </div>
+                    <div class="counselAmountRank">
+                        <div class="platform-header">
+                            <div class="header-title">当日咨询数量排行</div>
+                        </div>
+                    </div>
+                    <div class="ratingRank">
+                        <div class="platform-header">
+                            <div class="header-title">当日好评数量排行</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

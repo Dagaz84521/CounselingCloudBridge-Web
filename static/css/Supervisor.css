@@ -1,0 +1,138 @@
+.currentCounselors {
+    display: flex;
+    align-items: center;
+}
+
+/* 容器样式 */
+.consultation-platform {
+    width: 80%;
+    margin: 5px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 400px;
+}
+
+/* 标题和分页容器 */
+.platform-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.header-title {
+    font: 600 20px/1.5 'Microsoft YaHei', sans-serif;
+    color: #1a237e;
+}
+
+/* 分页按钮 */
+.supervisor-pagination {
+    display: flex;
+    gap: 8px;
+}
+
+.supervisor-page-button {
+    width: 32px;
+    height: 32px;
+
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.supervisor-page-button:hover {
+    background: #9aa8b7;
+    color: white;
+    border-color: #9aa8b7;
+}
+
+/* 咨询师列表 */
+.counselor-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 5px;
+}
+
+/* 单个咨询师条目 */
+.counselor-card {
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+    width:50%;
+}
+
+/* 状态指示器 */
+.status-indicator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin: 8px 0;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+/* 状态颜色调整（根据图片显示） */
+.status-available {
+    background: #4caf50;
+}
+
+/* 空闲-绿色 */
+.status-busy {
+    background: #ff9800;
+}
+
+/* 忙碌-橙色 */
+.status-away {
+    background: #f44336;
+}
+
+/* 离开-红色 */
+
+/* 文字样式 */
+.counselor-name {
+    font: 600 16px/1.5 'Microsoft YaHei', sans-serif;
+    color: #263238;
+    margin: 5px 0;
+    min-width: 100px;
+}
+
+.status-text {
+    font: 12px/1.5 'Microsoft YaHei', sans-serif;
+    color: #666;
+}
+
+/* 累计咨询数卡片 */
+.supervisor-completedcounsel {
+    background-color: rgb(92, 92, 92);
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:20%;
+    height:200px;
+}
+
+.supervisor-completedcounsel::before {
+    content: "累计完成咨询";
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.supervisor-completedcounsel::after {
+    content: "12353";
+    font-size: 2.8rem;
+    font-weight: 600;
+}
