@@ -170,5 +170,25 @@
 }
 
 
+/* 添加导航链接样式 */
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8px 0;
+}
 
+.nav-link:focus {
+    outline: none;
+}
 
+.leftOption {
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-decoration: none;
+}
