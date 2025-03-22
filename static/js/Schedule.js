@@ -68,7 +68,7 @@ function isWorkingDay(day) {
 
 // 添加交互功能
 function addCalendarInteractions() {
-    const calendar = document.getElementById('calendarGrid');
+    const calendar = document.querySelector('.calendar-grid');
     calendar.addEventListener('click', handleCellClick);
     calendar.addEventListener('mouseover', handleCellHover);
 }
@@ -108,3 +108,4 @@ function createDayCell(day) {
     cell.innerHTML = `<div class="day-number">${day}</div>`;
     return cell;
 }
+

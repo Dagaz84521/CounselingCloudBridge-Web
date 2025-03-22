@@ -87,30 +87,19 @@
                             </div>
                         </div>
 
-                        <div class="counsult-records">
+                        <div class="counsult-records" style="">
 
-                            <h2>咨询记录</h2>
+                            <h2>正在咨询中</h2>
                             <div class="consult-duration">
-                                <h3>总共用时</h3>
-                                <span>00:13:13</span>
+                                <h3>已咨询用时</h3>
+                                <span>00:00:00</span>
+                                <h3 style="color:rgb(126, 154, 254)">对方正在输入中……</h3>
                             </div>
 
-                            <div class="consult-evaluations">
-                                <div class="client-evaluation">
-                                    <h3>咨询者评价</h3>
-                                    <div class="star-rating">★★★★★</div>
-                                    <span class="rating-text">很棒的咨询师!</span>
-                                </div>
-                                <div class="client-evaluation">
-                                    <h3>咨询师评价</h3>
-                                    <div class="expertise-type">心理咨询</div>
-                                    <span class="rating-text">很棒的咨询师!</span>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="action-buttons">
-                            <button class="btn">请求督导</button>
+                            <button class="btn" id = "requestHelp">请求督导</button>
                             <button class="btn">结束咨询</button>
                         </div>
                     </div>
@@ -121,7 +110,7 @@
                             <!-- 消息示例 -->
                             <div class="message-line">
                                 <div class="message-avatar">
-                                    <img src="texture.png" alt="用户头像">
+                                    <img alt="用户头像">
                                 </div>
                                 <div class="message user-message">
                                     <div>您好，请问您有什么需要咨询的内容？</div>
@@ -157,7 +146,7 @@
                         </div>
                     </div>
 
-                    <div class="supervisor-content">
+                    <div class="supervisor-content" id="supervisor-content" style="display: none">
                         <div class="supervisor-section">
                             <div class="supervisor-avatar">
                                 <img alt="用户头像">
@@ -175,7 +164,7 @@
                             </div>
                         </div>
 
-                        <div class="chat-messages" id="messageContainer">
+                        <div class="chat-messages" id="requestMessageContainer">
                             <!-- 消息示例 -->
                             <div class="message-line">
                                 <div class="message-avatar">
@@ -201,8 +190,8 @@
                         </div>
 
                         <div class="chat-footer">
-                            <textarea class="message-input" placeholder="输入消息..." id="messageInput" rows="1"></textarea>
-                            <button class="send-button" id="sendButton">
+                            <textarea class="message-input" placeholder="输入消息..." id="requestMessageInput" rows="1"></textarea>
+                            <button class="send-button" id="requestSendButton">
                                 <span>发送</span>
                                 <svg viewBox="0 0 24 24" width="18" height="18">
                                     <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
@@ -367,6 +356,9 @@
             </div>
         </div>
     </div>
-</body>
 
+
+</body>
+<script type="text/javascript" src="../../static/js/consultantDuration.js"></script>
+<script type="text/javascript" src="../../static/js/Chat.js"></script>
 </html>
