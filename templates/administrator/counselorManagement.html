@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>心理咨询师工作台</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/LeftBar.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/RightBar.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/Modal.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/CounselorManagement.css">
+    <script type="text/javascript" src="../../static/js/Schedule.js"></script>
+    <script type="text/javascript" src="../../static/js/CounselorManagement.js"></script>
+</head>
+
+<body style="display: flex;">
+    <div class="page" style="height:100%;width:100vw">
+        <!-- 左侧信息栏 -->
+        <div class="leftBar">
+            <!-- 咨询师信息 -->
+            <div class="counselorBar">
+                <div class="counselor-info">
+                    <div class="avatar"></div>
+                    <div class="infoBar">
+                        <h3 style="color: #2d4059; font-size: 1.1em;">管理员</h3>
+                        <p style="color: #677489; font-size: 0.9em;">专业心理咨询</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 导航菜单 -->
+            <div class="nav-menu">
+                <div class="nav-item">
+                    <img src="../../static/image/homepageGrey.png">
+                    <a href="base.html" class="nav-link">
+                        <span class="leftOption" id="Option_bed_information">首页</span>
+                    </a>
+                </div>
+
+                <div class="nav-item">
+                    <img src="../../static/image/logGrey.png">
+                    <a href="history.html" class="nav-link">
+                        <span class="leftOption" id="Option_bed_information">咨询记录</span>
+                    </a>
+                </div>
+
+                <div class="nav-item">
+                    <img src="../../static/image/scheduleGrey.png">
+                    <a href="schedule.html" class="nav-link">
+                        <span class="leftOption" id="Option_bed_information">排班表</span>
+                    </a>
+                </div>
+
+                <div class="nav-item-activate">
+                    <img src="../../static/image/counselorGreen.png">
+                    <a href="counselorManagement.html" class="nav-link">
+                        <span class="leftOption" id="Option_bed_information">咨询师管理</span>
+                    </a>
+                </div>
+
+                <div class="nav-item">
+                    <img src="../../static/image/supervisorGrey.png">
+                    <a href="supervisorManagement.html" class="nav-link">
+                        <span class="leftOption" id="Option_bed_information">督导管理</span>
+                    </a>
+                </div>
+                
+            </div>
+
+
+        </div>
+
+        <div class="RightBar">
+            <!-- 上方导航栏 -->
+            <div class="navBar">
+                <div class="logo"></div>
+                <h2>Counseling Cloud Bridge</h2>
+            </div>
+            <div class="contentBar">
+                <div class="search-container">
+                    <!-- 姓名搜索下拉 -->
+                    <div class="search-group">
+                      <label class="search-label"></label>
+                      <select class="search-select">
+                        <option value="" disabled selected>输入姓名进行搜索</option>
+                        <option>张三</option>
+                        <option>李四</option>
+                        <option>王五</option>
+                      </select>
+                    </div>
+                    <button class="add-counselor">新增咨询师</button>
+                </div>
+
+
+
+                <div class="counselor-management" style="height:70vh">
+                    <div class="records-table">
+                        <!-- 表头 -->
+                        <div class="table-header">
+                            <div>姓名</div>
+                            <div>身份</div>
+                            <div>绑定督导</div>
+                            <div>总咨询数</div>
+                            <div>咨询总时长</div>
+                            <div>平均咨询评级</div>
+                            <div>周值班安排</div>
+                            <div>操作</div>
+                        </div>
+
+                        <!-- 数据行 -->
+                        <div class="table-row">
+                              <div data-field="name">张先生</div>
+                              <div data-field="type">咨询师</div>
+                              <div data-field="supervisor">督导1</div>
+                              <div data-field="id">2887</div>
+                              <div class="duration">00:12:54</div>
+                              <div class="rating">...</div>
+                              <div data-field="schedule">周一、周三、周五</div>
+                              <div class="actions">
+                                <button class="update">查看详情</button>
+                              </div>
+                        </div>
+
+                        <div class="table-row">
+                            <div data-field="name">曹先生</div>
+                            <div data-field="type">咨询师</div>
+                            <div data-field="supervisor">督导2</div>
+                            <div data-field="id">2887</div>
+                            <div class="duration">00:12:54</div>
+                            <div class="rating">...</div>
+                            <div data-field="schedule">周一、周三、周五</div>
+                            <div class="actions">
+                              <button class="update">查看详情</button>
+                            </div>
+                      </div>
+                    </div>
+
+                    <div class="pagination">
+                        <button class="btn prev">上一页</button>
+                        <div class="page-numbers">
+                            <button class="btn page-number active">1</button>
+                            <button class="btn page-number">2</button>
+                            <button class="btn page-number">3</button>
+                            <span class="ellipsis">...</span>
+                            <button class="btn page-number">8</button>
+                        </div>
+                        <button class="btn next">下一页</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container" id="counselor-information" style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">修改咨询师信息</h2>
+            <div class="modal-subtitle">修改咨询师个人信息</div>
+    
+            <!-- 咨询师信息表格 -->
+            <div class="info-table">
+                <div class="modal-table-row">
+                    <span class="modal-table-header">姓名</span>
+                    <span class="modal-table-header">绑定督导</span>
+                </div>
+                <div class="modal-table-row">
+                    <input  class="modal-table-content-input" type="text" placeholder="输入咨询师姓名"/>
+                    <input  class="modal-table-content-input" type="text" placeholder="输入督导姓名"/>
+                </div>
+            </div>
+    
+            <!-- 周值班安排 -->
+            <div class="schedule-section">
+                <div class="schedule-title">周值班安排</div>
+                <div class="schedule-days">
+                    <div class="day-group">
+                        <span>周一</span>
+                        <span>周二</span>
+                        <span>周三</span>
+                        <span>周四</span>
+                    </div>
+                    <div class="day-group">
+                        <span>周五</span>
+                        <span>周六</span>
+                        <span>周日</span>
+                        <span style="border: none;"></span>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- 操作按钮 -->
+            <div class="modal-button-line">
+                <button class="modal-btn confirm-btn">确定</button>
+                <button class="modal-btn cancel-btn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container" id="addCounselorModal" style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">添加咨询师</h2>
+            <div class="modal-subtitle">添加咨询师账号并添加其个人信息</div>
+
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="personal">个人信息</button>
+                <button class="tab-btn" data-tab="work">工作信息</button>
+            </div>
+    
+            <!-- 个人信息选项卡 -->
+            <div class="tab-content active" id="personal">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>姓名</label>
+                        <input type="text" placeholder="请输入姓名">
+                    </div>
+                    <div class="input-group">
+                        <label>性别</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="gender" value="男"> 男</label>
+                            <label><input type="radio" name="gender" value="女"> 女</label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>年龄</label>
+                        <input type="number" placeholder="请输入年龄">
+                    </div>
+                    <div class="input-group">
+                        <label>身份证号码</label>
+                        <input type="text" placeholder="请输入身份证号">
+                    </div>
+                    <div class="input-group">
+                        <label>电话</label>
+                        <input type="tel" placeholder="请输入联系电话">
+                    </div>
+                    <div class="input-group">
+                        <label>邮箱</label>
+                        <input type="email" placeholder="请输入邮箱地址">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>绑定督导</label>
+                    <select>
+                        <option value="">请选择督导</option>
+                        <option>督导1</option>
+                        <option>督导2</option>
+                    </select>
+                </div>
+            </div>
+    
+            <!-- 工作信息选项卡 -->
+            <div class="tab-content" id="work">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>用户名</label>
+                        <input type="text" placeholder="请输入用户名">
+                    </div>
+                    <div class="input-group">
+                        <label>密码</label>
+                        <input type="text" placeholder="请输入密码">
+                    </div>
+                    <div class="input-group">
+                        <label>工作单位</label>
+                        <input type="text" placeholder="请输入工作单位">
+                    </div>
+                    <div class="input-group">
+                        <label>职称</label>
+                        <input type="text" placeholder="请输入个人职称">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="modal-button-line">
+                <button class="modal-btn confirm-btn">确定</button>
+                <button class="modal-btn cancel-btn">取消</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

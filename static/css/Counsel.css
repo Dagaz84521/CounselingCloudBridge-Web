@@ -14,7 +14,8 @@
     background: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 15%;
+    width: 15vw;
+    min-width: 15vw;
 }
 
 .info-section {
@@ -69,6 +70,8 @@
 .counsult-records {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: auto;
 }
 
 .consult-duration {
@@ -200,7 +203,7 @@
 /* 聊天容器样式 */
 .chat-content {
     width: 100%;
-    max-width: 800px;
+    max-width: 75vw;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     background: #f5f7fa;
@@ -368,6 +371,10 @@
     max-height: 90px;
     border-radius: 50%;
     border: 2px solid #e0e0e0;
+}
+
+.supervisor-button{
+    margin-left: auto;
 }
 
 .supervisor-meta {
