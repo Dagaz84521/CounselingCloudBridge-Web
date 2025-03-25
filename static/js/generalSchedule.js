@@ -50,7 +50,7 @@ function generateCalendar(year, month) {
         // 生成日期格
         const daysInMonth = new Date(year, month, 0).getDate();
         for (let day = 1; day <= daysInMonth; day++) {
-            const cell = createDayCell(day);
+            const cell = createDayCell(year, month, day);
             calendarGrid.appendChild(cell);
         }
 
@@ -68,7 +68,7 @@ function isWorkingDay(day) {
 
 // 添加交互功能
 function addCalendarInteractions() {
-    const calendar = document.getElementById('calendarGrid');
+    const calendar = document.querySelector('.calendar-grid');
     calendar.addEventListener('click', handleCellClick);
     calendar.addEventListener('mouseover', handleCellHover);
 }
@@ -78,16 +78,24 @@ function handleCellClick(event) {
     const cell = event.target.closest('.day-cell');
     if (cell) {
         console.log('选中日期:', cell.querySelector('.day-number').textContent);
+        console.log('选中日期:', cell.dataset);
+        currentDate = document.getElementById("currentDate")
+        currentDate.innerHTML = cell.dataset.monthField+"月"+cell.dataset.dateField+"日 "+ cell.dataset.weekdayName
     }
 }
 
 function handleCellHover(event) {
     const cell = event.target.closest('.day-cell');
     if (cell) {
+        // 悬停时应用缩放和黑色边框
         cell.style.transform = 'scale(1.02)';
+        cell.style.border = "3px solid black"; 
+        // 添加一次性鼠标移出事件监听器
         cell.addEventListener('mouseout', () => {
+            // 恢复原始样式
             cell.style.transform = 'none';
-        });
+            cell.style.border = '';
+        }, { once: true });
     }
 }
 
@@ -102,9 +110,22 @@ function createEmptyCell() {
 }
 
 // 辅助函数：创建日期单元格
-function createDayCell(day) {
+function createDayCell(year, month, day) {
     const cell = document.createElement('div');
     cell.className = `day-cell ${isWorkingDay(day) ? 'working-day' : ''}`;
+
+    // 计算星期几（0=周一 到 6=周日）
+    const targetDate = new Date(year, month-1, day);
+    const weekdayIndex = (targetDate.getDay() + 6) % 7; // 转换周日从0到6
+    const weekdaysCN = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+
+    // 添加数据属性
+    cell.dataset.yearField = year;    // data-year-field
+    cell.dataset.monthField = month;  // data-month-field
+    cell.dataset.dateField = day;     // data-date-field
+    cell.dataset.weekdayField = weekdayIndex; // 数字形式存储
+    cell.dataset.weekdayName = weekdaysCN[weekdayIndex]; 
+
     cell.innerHTML = `<div class="day-number">${day}</div><div class="staff-info"><div>咨询师</div><div>督导</div></div>`;
     return cell;
 }

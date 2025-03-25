@@ -1,0 +1,283 @@
+/* 容器样式 */
+.search-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* 输入组样式 */
+.search-group {
+    width: 300px;
+    position: relative;
+}
+
+/* 标签样式 */
+.search-label {
+    display: block;
+    color: #2d4059;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+/* 下拉菜单样式 */
+.search-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e4e9;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+    color: #333;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+
+}
+
+.add-counselor {
+    margin-left: auto;
+    background: rgb(19, 171, 166);
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+}
+
+/* 咨询记录模块 */
+.counselor-management {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    position: relative;
+}
+
+* 调整后的表格样式 */ .records-table {
+    width: 100%;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+    display: grid;
+    /* 8列布局（与数据列数对应） */
+    grid-template-columns: 1fr 1fr 1.5fr 1.5fr 1.5fr 1.5fr 2fr 160px;
+    gap: 15px;
+    color: #666;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-bottom: 2px solid #f0f2f5;
+    align-items: center;
+}
+
+.table-row {
+    display: grid;
+    /* 保持与表头相同的列宽设置 */
+    grid-template-columns: 1fr 1fr 1.5fr 1.5fr 1.5fr 1.5fr 2fr 160px;
+    gap: 15px;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f5f7fa;
+    align-items: center;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+/* 分页样式 */
+.pagination {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 5px;
+}
+
+
+
+.ellipsis {
+    padding: 0 10px;
+}
+
+/* 操作按钮容器 */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* 按钮样式调整 */
+.update {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    border: none
+}
+
+
+.info-table {
+    margin: 15px 0;
+    border: 1px solid #ddd;
+}
+
+.modal-table-row {
+    display: flex;
+    
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-table-row:last-child {
+    border-bottom: none;
+}
+
+.modal-table-header {
+    font-weight: bold;
+    width: 50%;
+    padding: 10px;
+}
+
+.modal-table-content {
+    width: 50%;
+}
+
+.modal-table-content-input {
+    border: 0;
+    width: 50%;
+    padding: 10px;
+}
+
+
+.schedule-section {
+    margin-top: 20px;
+}
+
+.schedule-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.schedule-days {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.day-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.day-group span {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #eee;
+}
+
+.day-group span {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.day-group span.selected {
+    background-color: #abc1d7;
+    color: white;
+    border-color: #abc1d7;
+}
+
+.day-group span:hover {
+    background-color: #e6f7ff;
+}
+
+.modal-tabs {
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 16px;
+    border: none;
+    background: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tab-btn.active {
+    background: white;
+    border-bottom: 2px solid #1890ff;
+    color: #1890ff;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: 500;
+    color: #333;
+}
+
+.input-group input, 
+.input-group select,
+.input-group textarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.modal-footer {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 1px solid #eee;
+}
