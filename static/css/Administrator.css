@@ -1,0 +1,307 @@
+.RightBar {
+    margin-left: 210px;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+}
+
+.navBar {
+    height: 6%;
+    display: flex;
+    align-items: center;
+    border: 0 2%;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-right: 1.5rem;
+}
+
+.contentBar {
+    flex-direction: column;
+    display: flex;
+    height:100%;
+    min-height: 100%;
+    background-color: #f5f7fa;
+}
+
+.currentConsult{
+    display: flex;
+    width: 100%;
+}
+
+/* 状态卡片容器 */
+.currentStatusCard {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    margin-left:20px;
+    margin-bottom:20px;
+    min-width: 400px;
+    width: 40%;
+    min-height:150px;
+}
+
+.currentStatus {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+}
+
+.currentStatus::after {
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #4a9cff;
+    margin-top: 10px;
+    
+}
+
+.currentStatus:nth-child(1)::after {
+    content: "35";
+}
+
+.currentStatus:nth-child(2)::after {
+    content: "6:12:30";
+}
+
+.currentConsultLineChart{
+    width:60%;
+    background: white;
+    margin:20px;
+    min-height: 220px;
+    padding:0 20px;
+}
+
+.Management{
+    display: flex;
+    height: 30%;
+    width: 100%;
+    margin: 10px 0;
+}
+
+/* 容器样式 */
+.counselor-consultation {
+    width: 45%;  
+    padding:5px 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height:300px;
+    margin-left: 20px;
+}
+
+.currentCounselCarrying{
+    background-color: rgb(92, 92, 92);
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:15%;
+    height:300px;
+    min-height:300px;
+    margin-right: 20px;
+}
+
+.currentCounselCarrying::before {
+    content: "正在进行的咨询";
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.currentCounselCarrying::after {
+    content: "12353";
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+
+/* 容器样式 */
+.supervisor-assistance {
+    width: 20%;  
+    padding:5px 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height:300px;
+}
+
+.supervisorAssistanceCarrying{
+    background-color: rgb(92, 92, 92);
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:10%;
+    height:300px;
+    min-height:300px;
+    margin-right: 10px;
+}
+
+.supervisorAssistanceCarrying::before {
+    content: "正在进行的督导会话";
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.supervisorAssistanceCarrying::after {
+    content: "12353";
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+/* 标题和分页容器 */
+.platform-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.header-title {
+    font: 600 20px/1.5 'Microsoft YaHei', sans-serif;
+    color: #1a237e;
+    margin: 10px 0;
+}
+
+/* 分页按钮 */
+.supervisor-pagination {
+    display: flex;
+    gap: 8px;
+}
+
+.supervisor-page-button {
+    width: 32px;
+    height: 32px;
+
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.supervisor-page-button:hover {
+    background: #9aa8b7;
+    color: white;
+    border-color: #9aa8b7;
+}
+
+/* 咨询师列表 */
+.counselor-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 5px;
+    margin-top:20px;
+}
+
+.supervisor-list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 5px;
+    margin-top:20px;
+}
+
+/* 单个咨询师条目 */
+.counselor-card {
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+    width:50%;
+}
+
+/* 状态指示器 */
+.status-indicator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin: 8px 0;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+/* 状态颜色调整（根据图片显示） */
+.status-available {
+    background: #4caf50;
+}
+
+/* 空闲-绿色 */
+.status-busy {
+    background: #ff9800;
+}
+
+/* 忙碌-橙色 */
+.status-away {
+    background: #f44336;
+}
+
+/* 离开-红色 */
+
+/* 文字样式 */
+.counselor-name {
+    font: 600 16px/1.5 'Microsoft YaHei', sans-serif;
+    color: #263238;
+    margin: 5px 0;
+    min-width: 100px;
+}
+
+.status-text {
+    font: 12px/1.5 'Microsoft YaHei', sans-serif;
+    color: #666;
+}
+
+
+
+.statisticData{
+    display: flex;
+    height: 30%;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.sevendaysData{
+    height: 200px;
+    background: white;
+    margin:20px;
+    width:45%;
+    padding:0 20px;
+}
+
+.counselAmountRank{
+    height: 200px;
+    background: white;
+    margin:20px;
+    width:25%;
+    padding:0 20px;
+}
+
+.ratingRank{
+    height: 200px;
+    background: white;
+    margin:20px;
+    width:25%;
+    padding:0 20px;
+}

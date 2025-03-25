@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>心理咨询师工作台</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/LeftBar.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/RightBar.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/Schedule.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/Records.css">
+    <script type="text/javascript" src="../../static/js/Schedule.js"></script>
+</head>
+
+<body style="display: flex;">
+    <div class="page" style="height:100%;width:100vw">
+        <!-- 左侧信息栏 -->
+        <div class="leftBar">
+            <!-- 咨询师信息 -->
+            <div class="counselorBar">
+                <div class="counselor-info">
+                    <div class="avatar"></div>
+                    <div class="infoBar">
+                        <h3 style="color: #2d4059; font-size: 1.1em;">督导</h3>
+                        <p style="color: #677489; font-size: 0.9em;">专业心理咨询</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 导航菜单 -->
+            <div class="nav-menu">
+                <div class="nav-item">
+                    <img src="../../static/image/homepageGrey.png">
+                    <a href="base.html" class="nav-link">
+                        <span class="leftOption" id="Option_bed_information">首页</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <img src="../../static/image/assistanceGrey.png">
+                    <span>求助记录</span>
+                </div>
+
+                <div class="nav-item">
+                    <img src="../../static/image/scheduleGrey.png">
+                    <a href="schedule.html" class="nav-link">
+                        <span class="leftOption" id="Option_bed_information">排班表</span>
+                    </a>
+                </div>
+
+                <div class="nav-item-activate">
+                    <img src="../../static/image/logGreen.png">
+                    <a href="history.html" class="nav-link">
+                        <span class="leftOption" id="Option_bed_information">咨询记录</span>
+                    </a>
+                </div>
+            </div>
+            <!-- 会话列表 -->
+            <div class="session-list">
+                <span>会话列表</span>
+                <div class="user-item">
+                    <span>张先生</span>
+                    <span class="badge">2</span>
+                </div>
+                <div class="user-item">
+                    <span>周小姐</span>
+                    <i class="fas fa-question-circle" style="color: #677489;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="RightBar">
+            <!-- 上方导航栏 -->
+            <div class="navBar">
+                <div class="logo"></div>
+                <h2>Counseling Cloud Bridge</h2>
+            </div>
+            <div class="contentBar">
+                <div class="search-container">
+                    <!-- 姓名搜索下拉 -->
+                    <div class="search-group">
+                      <label class="search-label">搜索姓名</label>
+                      <select class="search-select">
+                        <option value="" disabled selected>输入姓名进行搜索</option>
+                        <option>张三</option>
+                        <option>李四</option>
+                        <option>王五</option>
+                      </select>
+                    </div>
+                  
+                    <!-- 日期选择下拉 -->
+                    <div class="search-group">
+                      <label class="search-label">选择日期</label>
+                      <div class="date-picker">
+                        <input type="date" class="date-input" placeholder="请选择日期">
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                <div class="consultation-records" style="height:70vh">
+                    <div class="records-table">
+                        <!-- 表头 -->
+                        <div class="table-header">
+                            <div>咨询人</div>
+                            <div>咨询时长</div>
+                            <div>咨询日期</div>
+                            <div>咨询评级</div>
+                            <div>操作</div>
+                        </div>
+
+                        <!-- 数据行 -->
+                        <div class="table-row">
+                            <div class="patient-info">
+                                <span>张先生</span>
+                            </div>
+                            <div class="duration">00:12:54</div>
+                            <div class="date">2020/12/23 12:09:23</div>
+                            <div class="rating">
+                                <div class="star-rating">
+                                    ★★★★★
+                                    <span class="rating-text">很棒的咨询师!</span>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="btn view-detail">查看详情</button>
+                                <button class="btn export">导出记录</button>
+                            </div>
+                        </div>
+                        <!-- 更多数据行... -->
+                    </div>
+
+                    <div class="pagination">
+                        <button class="btn prev">上一页</button>
+                        <div class="page-numbers">
+                            <button class="btn page-number active">1</button>
+                            <button class="btn page-number">2</button>
+                            <button class="btn page-number">3</button>
+                            <span class="ellipsis">...</span>
+                            <button class="btn page-number">8</button>
+                        </div>
+                        <button class="btn next">下一页</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
