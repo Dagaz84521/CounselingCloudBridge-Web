@@ -64,8 +64,19 @@
     font-size: 0.9rem;
 }
 
+.star-container {
+    display: flex;
+    align-items: center;
+    gap: 2px;  /* 星标间距 */
+}
+
 .star-rating {
     color: #ffd700;
+    font-size: 1.1rem;
+}
+
+.star-rating-placeholder{
+    color: #e0e0e0; /* 浅灰色 */
     font-size: 1.1rem;
 }
 
@@ -81,7 +92,7 @@
     gap: 10px;
 }
 
-.btn {
+.recordButton {
     padding: 8px 15px;
     border: none;
     border-radius: 6px;
@@ -99,7 +110,7 @@
     color: #00c853;
 }
 
-.btn:hover {
+.recordButton:hover {
     opacity: 0.9;
     transform: translateY(-1px);
 }

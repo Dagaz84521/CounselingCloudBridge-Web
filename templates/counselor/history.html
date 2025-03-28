@@ -6,9 +6,9 @@
     <title>心理咨询师工作台</title>
     <link rel="stylesheet" type="text/css" href="../../static/css/LeftBar.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/RightBar.css">
-    <link rel="stylesheet" type="text/css" href="../../static/css/Schedule.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/Records.css">
-    <script type="text/javascript" src="../../static/js/Schedule.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/Counsel.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/Modal.css">
 </head>
 
 <body style="display: flex;">
@@ -48,7 +48,7 @@
             <div class="session-list">
                 <span>会话列表</span>
                 <div class="user-item">
-                    <a href="counselCarring.html" class="nav-link">
+                    <a href="counsel.html" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">张先生</span>
                     </a>
                     <span class="badge">2</span>
@@ -101,24 +101,7 @@
                             <div>操作</div>
                         </div>
 
-                        <!-- 数据行 -->
-                        <div class="table-row">
-                            <div class="patient-info">
-                                <span>张先生</span>
-                            </div>
-                            <div class="duration">00:12:54</div>
-                            <div class="date">2020/12/23 12:09:23</div>
-                            <div class="rating">
-                                <div class="star-rating">
-                                    ★★★★★
-                                    <span class="rating-text">很棒的咨询师!</span>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <button class="btn view-detail">查看详情</button>
-                                <button class="btn export">导出记录</button>
-                            </div>
-                        </div>
+
                         <!-- 更多数据行... -->
                     </div>
 
@@ -138,5 +121,7 @@
         </div>
     </div>
 </body>
+
+<script type="text/javascript" src="../../static/js/recentlyCompletedCounsel.js"></script>
 
 </html>

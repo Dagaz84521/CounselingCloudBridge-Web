@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/RightBar.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/Schedule.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/Records.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/Modal.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/Counsel.css">
     <script type="text/javascript" src="../../static/js/Schedule.js"></script>
 </head>
 
@@ -52,9 +54,24 @@
                     </a>
                     <span class="badge">2</span>
                 </div>
-                <div class="user-item">
-                    <span>周小姐</span>
-                    <i class="fas fa-question-circle" style="color: #677489;"></i>
+
+                <!-- 示例项 -->
+                <div class="user-item-container">
+                    <a href="counsel.html" class="user-item-content" draggable="false">
+                        <div class="user-item">张先生</div>
+                    </a>
+                    <div class="menu-actions">
+                        <div class="delete-btn" onclick="handleDelete(this)">删除</div>
+                    </div>
+                </div>
+                
+                <div class="user-item-container">
+                    <div class="user-item-content">
+                        <div class="user-item">周小姐</div>
+                    </div>
+                    <div class="menu-actions">
+                        <div class="delete-btn" onclick="handleDelete(this)">删除</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -158,24 +175,6 @@
                             <div>操作</div>
                         </div>
 
-                        <!-- 数据行 -->
-                        <div class="table-row">
-                            <div class="patient-info">
-                                <span>张先生</span>
-                            </div>
-                            <div class="duration">00:12:54</div>
-                            <div class="date">2020/12/23 12:09:23</div>
-                            <div class="rating">
-                                <div class="star-rating">
-                                    ★★★★★
-                                    <span class="rating-text">很棒的咨询师!</span>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <button class="btn view-detail">查看详情</button>
-                                <button class="btn export">导出记录</button>
-                            </div>
-                        </div>
                         <!-- 更多数据行... -->
                     </div>
                 </div>
@@ -183,5 +182,7 @@
         </div>
     </div>
 </body>
+<script type="text/javascript" src="../../static/js/sessionListDelete.js"></script>
+<script type="text/javascript" src="../../static/js/recentlyCompletedCounsel.js"></script>
 
 </html>

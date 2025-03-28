@@ -6,7 +6,10 @@ const messageContainer = document.getElementById('messageContainer');
 const requestHelpButton = document.getElementById('requestHelp');
 const requestMessageInput = document.getElementById('requestMessageInput');
 const requestMessageContainer = document.getElementById('requestMessageContainer');
-const requestSendButton =document.getElementById('requestSendButton');
+const requestSendButton = document.getElementById('requestSendButton');
+
+
+
 
 // 发送消息功能
 function sendMessage() {
@@ -93,6 +96,9 @@ function createAvatarDiv(){
 
 requestHelpButton.addEventListener('click',function(){
     document.getElementById("supervisor-content").style.display = "flex"
+    document.getElementById("requestIcon").src= "../../static/image/lightGreen.png"
+    document.getElementById("requestHelp").style.color = "#1DABA6"
+    document.getElementById("requestHelp").innerHTML="请求督导中"
 })
 
 function receiveClientMessage(message)
