@@ -1,4 +1,4 @@
-class ChatClient {
+class ChatService {
     constructor(config) {
 
         this.config = {
