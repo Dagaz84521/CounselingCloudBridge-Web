@@ -92,7 +92,6 @@
 
 .session-list {
     margin-top: 20px;
-
 }
 
 
@@ -118,9 +117,78 @@
     margin: 6px 0;
     background-color: #ffffff;
     border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    
     transition: transform 0.2s ease;
 }
+
+.user-item-container {
+    position: relative;
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+    margin: 6px 0; /* 添加外边距 */
+    border-radius: 6px; /* 统一圆角 */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03); /* 添加阴影 */
+    width: 100%;
+
+}
+
+.user-item-container:active {
+    cursor: grabbing;
+}
+
+.user-item-content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    background: #ffffff;
+    border-radius: 6px;
+    transition: transform 0.2s ease; /* 调整动画时长 */
+    z-index: 1;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 激活状态样式 */
+.user-item-container.active .user-item-content {
+    background-color: rgb(237, 252, 249);
+}
+
+.user-item-container.active .user-item-content::after {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 60%;
+    background: rgb(19,171,166);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.delete-btn {
+    padding: 0 25px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: #ff4444;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
 
 .user-item:hover {
     transform: translateX(5px);

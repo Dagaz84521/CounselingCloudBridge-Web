@@ -154,16 +154,30 @@
     /* 添加轻微投影增强层次 */
 }
 
-.btn {
-
+.button-container{
     text-align: center;
-    padding: 8px 16px;
+    display: flex;
+    margin:10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-image{
+    max-width: 48px;
+    max-height: 48px;
+    
+}
+
+.btn {
+    background: rgba(0, 0, 0, 0);
+    text-align: center;
+    padding: 8px 0;
     border-radius: 20px;
     font-size: 15px;
     transition: all 0.3s;
     border: 1px solid transparent;
-    min-height: 80px;
-    width: 100%;
+    color:rgb(125, 127, 136);
+    width: 60%;
 }
 
 
@@ -174,7 +188,7 @@
     font-size: 16px;
 }
 
-.star-rating {
+.counsel-star-rating {
     color: #ffd700;
     font-size: 2rem;
     margin-left: 2px;
@@ -375,6 +389,8 @@
 
 .supervisor-button{
     margin-left: auto;
+    justify-content: center;
+    text-align: center;
 }
 
 .supervisor-meta {
