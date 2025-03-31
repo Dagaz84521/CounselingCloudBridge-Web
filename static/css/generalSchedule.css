@@ -132,6 +132,7 @@
     cursor: pointer;
     font-size: 20px;
     min-height: 25px;
+    caret-color: transparent;
 }
 
 .option_content-activate {
@@ -142,6 +143,7 @@
     cursor: pointer;
     font-size: 20px;
     min-height: 25px;
+    caret-color: transparent;
 }
 
 .option_content-activate::after {
@@ -154,7 +156,6 @@
     width: 75%;
     height:3px;
     background: rgb(19,171,166);
-    cursor: pointer;
 }
 
 .add_operation{
