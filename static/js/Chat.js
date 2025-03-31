@@ -1,4 +1,6 @@
 // DOM元素引用
+import { WebSocketClient }  from "./WebSocketClient.js";
+
 const messageInput = document.getElementById('messageInput');
 const sendButton = document.getElementById('sendButton');
 const messageContainer = document.getElementById('messageContainer');
@@ -8,11 +10,16 @@ const requestMessageInput = document.getElementById('requestMessageInput');
 const requestMessageContainer = document.getElementById('requestMessageContainer');
 const requestSendButton =document.getElementById('requestSendButton');
 
+ws = new WebSocketClient("ws://localhost:8080");
+ws.connect();
+ws.onMessage(receiveClientMessage);
 // 发送消息功能
 function sendMessage() {
     const content = messageInput.value.trim();
     if (!content) return;
-    console.log("发送信息")
+    console.log("发送信息");
+
+    ws.sendMessage(content);
 
     const messageLine = document.createElement('div');
     messageLine.className = 'message-line';
