@@ -1,40 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="../static/css/Modal.css">
-  
-  <title>Counseling Cloud Bridge系统登录</title>
+  <link rel="stylesheet" href="../static/css/Modal.css">
+  <title>心理咨询云桥系统</title>
 </head>
 
 <body>
-  <div id="loginInput-container" class="modal-container" style = "display: flex;">
+
+  <div id="login-container" class="modal-container">
     <div class="modal-content">
-        <h2 class="modal-title" style="text-align: center;margin-bottom: 20px;">账号登陆</h2>
-        <form method="post">
-          <input type="text" id="account-InputBlank" class="modal-input" placeholder="请输入你的账号：" />
-          <input type="text" id="password-InputBlank" class="modal-input" placeholder="请输入你的密码：" />
-        <form>
-        <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
-          <button id="loginInput-confirm" class="modal-btn" onclick = login_submit()>确定</button>
-          <button id="loginInput-cancel" class="modal-btn">取消</button>
+      <h2 class="modal-title">系统登录</h2>
+      <form id="loginForm">
+        <div class="input-group">
+          <input type="text" id="username" class="modal-input" placeholder="账号" required>
         </div>
+        <div class="input-group">
+          <input type="password" id="password" class="modal-input" placeholder="密码" required>
+        </div>
+        
+        <div class="button-group">
+          <button type="submit" class="modal-btn primary">登录</button>
+          <button type="reset" class="modal-btn secondary">重置</button>
+        </div>
+      </form>
     </div>
   </div>
-  
-  <div id="alert" class="modal-container" style="display: none;">
+
+  <div id="loading-overlay" style="display: none;">
+    <div class="loading-spinner"></div>
+    <p>正在验证登录信息...</p>
+  </div>
+
+  <!-- 错误提示-->
+  <div id="error-modal" class="modal-container" style="display: none;">
     <div class="modal-content">
-        <h2 class="modal-title">错误提示</h3>
-        <div id="error_information" style="width: 100%;margin-bottom: 1rem;" >账号密码错误</div>
-        <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
-          <button id="alert-confirm" class="modal-btn"  onclick = removeAlert()>确定</button>
-        </div>
+      <h3 class="modal-title">登录错误</h3>
+      <div id="error-message" class="error-content"></div>
+      <button class="modal-btn" onclick="closeError()">确定</button>
     </div>
   </div>
- 
+
+  <script src="../static/js/login.js"></script>
 </body>
 
 </html>
