@@ -16,6 +16,18 @@
 .search-group {
     width: 300px;
     position: relative;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.search-group i{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
 }
 
 /* 标签样式 */
@@ -30,7 +42,7 @@
 /* 下拉菜单样式 */
 .search-select {
     width: 100%;
-    padding: 12px 15px;
+    padding: 12px 35px;
     border: 1px solid #e0e4e9;
     border-radius: 6px;
     background: #fff;
@@ -50,8 +62,11 @@
     color: #ffffff;
     border: none;
     border-radius: 9px;
-}
 
+}
+.add-counselor i{
+    margin:10px 0;
+}
 /* 咨询记录模块 */
 .counselor-management {
     background: #fff;

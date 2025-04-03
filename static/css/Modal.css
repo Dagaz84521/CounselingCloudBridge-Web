@@ -27,12 +27,37 @@
     margin-bottom: 0;
 }
 
+.modal-title-middle {
+    margin-bottom: 5px;
+    text-align: center;
+}
 
 .modal-subtitle {
     margin-bottom: 10px;
     margin-top: 0;
     font-size: 14px;
-    color:#dddddd;
+    color: #dddddd;
+}
+
+.modal-subtitle-middle {
+    margin-bottom: 25px;
+    margin-top: 0;
+    font-size: 14px;
+    color: #dddddd;
+    text-align: center;
+}
+
+.modal-icon-content {
+    width: 100%;
+    text-align: center;
+    margin: 15px 10px 0 0;
+}
+
+.modal-icon {
+    min-width: 128px;
+    max-width: 128px;
+    min-height: 128px;
+    max-height: 128px;
 }
 
 .modal-line {
@@ -87,51 +112,53 @@
     gap: 50px;
 }
 
-.consult-type{
+.consult-type {
     background-color: #60ffcf;
     font-size: 20px;
-    width:80px;
+    width: 80px;
 }
 
-.consult-line{
+.consult-line {
     font-size: 14px;
 }
 
-.modal-chat-historys{
+.modal-chat-historys {
     border: 1px solid #dddddd;
-    gap:10px;
+    gap: 10px;
     display: flex;
     flex-direction: column;
     max-height: 480px;
     overflow-y: auto;
 }
 
-.modal-chat-history-line{
+.modal-chat-history-line {
     display: flex;
     align-items: center;
     width: 100%;
     border-bottom: 1px solid #dddddd;
-    
+
 }
 
-.modal-message-line{
-   width: 100%;
-   margin:0 10px;
+.modal-message-line {
+    width: 100%;
+    margin: 0 10px;
 }
 
 
-.modal-message-line-info{
+.modal-message-line-info {
     display: flex;
-    justify-content: space-between; /* 关键属性 */
-    width: 100%; /* 确保撑满父容器 */
+    justify-content: space-between;
+    /* 关键属性 */
+    width: 100%;
+    /* 确保撑满父容器 */
 }
 
-.modal-message-line-timestamp{
-    color:#afaeae;
+.modal-message-line-timestamp {
+    color: #afaeae;
 }
 
-.modal-message-line-character{
-    color:#464545;
+.modal-message-line-character {
+    color: #464545;
 }
 
 
@@ -143,14 +170,19 @@
     height: 40px;
     animation: spin 1s linear infinite;
     margin: 20px auto;
-  }
+}
 
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
 
-  #loading-overlay {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#loading-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -162,4 +194,32 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
-  }
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.modal-input-with-icon{
+	width: 100%;
+	padding: 15px 15px 15px 45px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	font-size: 16px;
+	box-sizing: border-box;
+	transition: border-color 0.3s ease;
+}
+
+.modal-input-with-icon:focus {
+	border-color: #1daba6;
+	outline: none;
+}

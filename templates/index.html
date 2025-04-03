@@ -6,23 +6,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/css/Modal.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <title>心理咨询云桥系统</title>
 </head>
 
 <body>
 
-  <div id="login-container" class="modal-container">
+  <div id="login-container" class="modal-container" style="background: rgb(240, 245, 252);">
     <div class="modal-content">
-      <h2 class="modal-title">系统登录</h2>
+      <div class="modal-icon-content">
+        <img class="modal-icon" src="../static/image/icon.png">
+      </div>
+      
+      <h1 class="modal-title-middle">心理咨询云桥</h1>
+      <div class="modal-subtitle-middle">Counseling Cloud Bridge</div>
       <form id="loginForm">
         <div class="input-group">
-          <input type="text" id="username" class="modal-input" placeholder="账号" required>
+          <i class="fas fa-user"></i>
+          <input type="text" id="username" class="modal-input-with-icon" placeholder="账号" required >
         </div>
         <div class="input-group">
-          <input type="password" id="password" class="modal-input" placeholder="密码" required>
+          <i class="fas fa-lock"></i>
+          <input type="password" id="password" class="modal-input-with-icon" placeholder="密码" required>
         </div>
         
-        <div class="button-group">
+        <div class="modal-button-line">
           <button type="submit" class="modal-btn primary">登录</button>
           <button type="reset" class="modal-btn secondary">重置</button>
         </div>

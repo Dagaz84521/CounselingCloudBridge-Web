@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/RightBar.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/Modal.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/CounselorManagement.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script type="text/javascript" src="../../static/js/Schedule.js"></script>
     <script type="text/javascript" src="../../static/js/CounselorManagement.js"></script>
 </head>
@@ -73,14 +74,17 @@
         <div class="RightBar">
             <!-- 上方导航栏 -->
             <div class="navBar">
-                <div class="logo"></div>
-                <h2>Counseling Cloud Bridge</h2>
+                <div class="logo">
+                    <img src="../../static/image/icon.png">
+                </div>
+                <h2>心理咨询云桥 Counseling Cloud Bridge</h2>
             </div>
             <div class="contentBar">
                 <div class="search-container">
                     <!-- 姓名搜索下拉 -->
                     <div class="search-group">
-                      <label class="search-label"></label>
+                      
+                      <i class="fas fa-search"></i>   
                       <select class="search-select">
                         <option value="" disabled selected>输入姓名进行搜索</option>
                         <option>张三</option>
@@ -88,7 +92,7 @@
                         <option>王五</option>
                       </select>
                     </div>
-                    <button class="add-counselor">新增咨询师</button>
+                    <button class="add-counselor"><i class="fas fa-user-plus"></i>新增咨询师</button>
                 </div>
 
 
