@@ -1,248 +1,150 @@
-class ChatService {
-    constructor(config) {
+export class SessionMessagingSystem {
+  constructor() {
+    this._sessions = new Map();       // sessionId -> { emitter, ws }
+    this._metadata = new Map();       // sessionId -> { senderId, receiverId }
+    this._pendingActions = new Map(); // 待处理操作队列
+  }
 
-        this.config = {
-            sessionId: config.sessionId,
-            userId: config.userId,
-            brokerURL: config.brokerURL,
-            reconnectDelay: config.reconnectDelay || 5000
-        };
-        // STOMP客户端初始化
-        this.stompClient = new Client({
-            brokerURL: this.config.brokerURL,
-            reconnectDelay: this.config.reconnectDelay,
-            heartbeatIncoming: 4000,
-            heartbeatOutgoing: 4000
-        });
-        this.subscriptions = new Map();
-        this._eventListeners = new Map();
+  session(sessionId, senderId, receiverId) {
+    // 首次调用时立即建立连接
+    if (senderId && receiverId) {
+      if (!this._metadata.has(sessionId)) {
+        this._metadata.set(sessionId, { senderId, receiverId });
+        this._initializeSession(sessionId); // 立即创建连接
+      } else {
+        console.warn('会话已存在，忽略重复初始化参数');
+      }
     }
-  
-    _setupSubscriptions() {
-        const createMessageHandler = (type) => (message) => {
-            try {
-                const parsed = JSON.parse(message.body);
-                const enhancedMessage = {
-                    ...parsed,
-                    type,
-                    _channel: message.headers.destination
-                };
+
+    const controller = {
+      subscribe: (eventType, handler) => {
+        this._validateSession(sessionId);
         
-                this.config.messageHandlers.onSessionMessage(enhancedMessage);
-                this._emit('session_message', enhancedMessage);
-            } catch (error) {
-                this._handleParseError(error, message.body);
-            }
-        };
-    
-        // 会话聊天订阅
-        const sessionSub = this.stompClient.subscribe(
-            `/topic/session/${this.config.sessionId}`,
-            createMessageHandler('session')
-        );
-        this.subscriptions.set('session', sessionSub.id);
-    
-        // 错误订阅
-        const errorSub = this.stompClient.subscribe(
-            '/user/queue/errors',
-            message => {
-                try {
-                    const parsed = JSON.parse(message.body);
-                    this.config.messageHandlers.onErrorMessage(parsed);
-                    this._emit('error', parsed);
-                } catch (error) {
-                    this._handleParseError(error, message.body);
-                }
-            }
-        );
-        this.subscriptions.set('error', errorSub.id);
-    }
-
-    /**
-     * 订阅事件
-     * @param {string} event 事件名称
-     * @param {Function} listener 监听函数
-     * @returns {Function} 取消订阅函数
-     */
-    on(event, listener) {
-        if (!this._eventListeners.has(event)) {
-            this._eventListeners.set(event, new Set());
-        }
-        this._eventListeners.get(event).add(listener);
-        return () => this.off(event, listener);
-    }
-
-    /**
-     * 取消订阅
-     * @param {string} event 事件名称
-     * @param {Function} [listener] 要移除的监听函数（不传则移除全部）
-     */
-    off(event, listener) {
-        if (!this._eventListeners.has(event)) return;
-            const listeners = this._eventListeners.get(event);
-        if (listener) {
-            listeners.delete(listener);
+        if (this._sessions.has(sessionId)) {
+          this._sessions.get(sessionId).emitter.on(eventType, handler);
         } else {
-            listeners.clear();
+          this._queueAction(sessionId, 'subscribe', { eventType, handler });
         }
-    }
+        return controller;
+      },
 
-    // 更新后的_emit方法
-    _emit(event, payload) {
-        // 触发内置监听器
-        if (this._eventListeners.has(event)) {
-            this._eventListeners.get(event).forEach(listener => {
-            try {
-                listener(payload);
-            } catch (err) {
-                console.error(`Event handler error for ${event}:`, err);
-            }
-        });
-        }
-        if (this.config.eventEmitter) {
-            this.config.eventEmitter.emit(event, payload);
-        }
-    }
-
-  
-    _handleParseError(error, rawData) {
-        const errorPayload = {
-            code: 500,
-            message: 'Message parse failed',
-            details: {
-            rawData: rawData.slice(0, 200), // 防止大数据量
-            error: error instanceof Error ? error.message : String(error)
-            }
-        };
+      send: (payload) => {
+        this._validateSession(sessionId);
+        const meta = this._metadata.get(sessionId);
         
-        this.config.messageHandlers.onErrorMessage(errorPayload);
-        this._emit('parse_error', errorPayload);
-    }
-  
-    // 连接管理方法示例
-    connect() {
-        this.stompClient.connect({}, () => {
-            this._setupSubscriptions();
-            console.log('Connected!');
-        }, (error) => {
-            this._emit('connection_error', error);
-        });
-    }
-  
-    disconnect() {
-        this.subscriptions.forEach((id, type) => {
-            this.stompClient.unsubscribe(id);
-        });
-        this.stompClient.disconnect();
-    }
-    /**
-     * 发送带用户上下文的文本消息
-     * @param {string} text - 原始消息内容
-     * @returns {Promise<Object>} 包含完整消息元数据的Promise
-     */
-    async sendMessage(text) {
-        // 上下文验证
-        // if (!this._validateContext()) {
-        //     const err = new Error('用户上下文不完整 (ECTX)');
-        //     this._emit('error', { code: 'ECTX', message: err.message });
-        //     throw err;
-        // }
-    
-        // 构造完整消息结构
         const message = {
-            meta: {
-                id: this._generateMsgId(),
-                session_id: this.config.sessionId,
-                user_id: this.config.userId
-            },
-            content: this._processContent(text)
+          sessionId: sessionId,
+          senderId: meta.senderId,
+          receiverId: meta.receiverId,
+          content: payload,
         };
-    
-        try {
-            await this._send(message);
-            this._emit('sent', message.meta);
-            return message.meta;
-        } catch (err) {
-            this._emit('error', {
-                code: 'ESEND',
-                message: `消息投递失败: ${err.message}`,
-                meta: message.meta
-            });
-            throw err;
-        }
-    }
-    
-    // 上下文验证
-    _validateContext() {
-        return [
-        this.config?.sessionId?.length >= 12, // session_id最小长度
-        /^usr-\d+$/.test(this.config?.userId), // 用户ID格式校验
-        this.stompClient?.connected // 连接状态
-        ].every(Boolean);
-    }
-    
-    // 内容处理流水线
-    _processContent(text) {
-        return this._sanitize(text)
-        .substring(0, 2000) // 长度截断
-        .replace(/\s+/g, ' ') // 合并空白字符
-        .trim();
-    }
-    
-    // 增强的净化处理
-    _sanitize(text) {
-        return String(text)
-        .replace(/[<>"']/g, m => ({
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#39;'
-        }[m]));
-    }
-    // STOMP发送适配器
-    async _send(payload) {
-        return new Promise((resolve, reject) => {
-            const receiptId = `msg-${payload.meta.id}`;
-            
-            this.stompClient.send(
-                '/queue/messages',
-                {
-                    'content-type': 'application/json',
-                    'receipt': receiptId,
-                    'user-id': payload.meta.user_id // 添加协议头
-                },
-                JSON.stringify(payload)
-            );
-    
-            // 15秒超时机制
-            const timer = setTimeout(() => {
-                reject(new Error('服务器响应超时'));
-            }, 15000);
-    
-            // 回执监听
-            this.once(`receipt:${receiptId}`, () => {
-                clearTimeout(timer);
-                resolve();
-            });
-        });
-    }
-}
-  
-// 使用示例
-// 配置参数示例
-// const config = {
-//      sessionId: 1, 
-//      userId: 1,                
-//      brokerURL: 'ws://chat.example.com:61614/ws',
-//      reconnectDelay: 3000
-// };
 
-// const client = new ChatClient(config);
-  
-// 事件监听示例
-// client.config.eventEmitter = new EventEmitter();
-// client.config.eventEmitter.on('session_message', (msg) => {
-//     if(msg.type === 'private') {
-//       // 处理私有消息
-//     }
-// });
+        if (this._isReady(sessionId)) {
+          this._sessions.get(sessionId).ws.send(JSON.stringify(message));
+        } else {
+          this._queueAction(sessionId, 'send', message);
+        }
+        return controller;
+      },
+
+      destroy: () => {
+        if (this._sessions.has(sessionId)) {
+          const session = this._sessions.get(sessionId);
+          session.ws.close();
+          session.emitter.destroy();
+          this._sessions.delete(sessionId);
+        }
+        this._metadata.delete(sessionId);
+        this._pendingActions.delete(sessionId);
+      }
+    };
+    return controller;
+  }
+
+  _initializeSession(sessionId) {
+    const meta = this._metadata.get(sessionId);
+    const ws = new WebSocket(`ws://localhost:8080/chat/${sessionId}`);
+    const emitter = new SessionEmitter(sessionId);
+    console.log("initializing");
+    ws.onopen = () => {
+      emitter.emit('connected');
+      this._processPendingActions(sessionId, ws);
+    };
+
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      emitter.emit('message', {
+        sessionId: data.sessionId,
+        senderId: data.senderId,
+        content: data.content,
+        time: data.createdAt,
+      });
+    };
+
+    ws.onclose = () => emitter.emit('disconnected');
+    ws.onerror = (error) => {
+      console.log("service error:", error);
+      emitter.emit('error', error);
+    }
+
+    this._sessions.set(sessionId, { emitter, ws });
+  }
+
+  _queueAction(sessionId, type, data) {
+    const queue = this._pendingActions.get(sessionId) || [];
+    queue.push({ type, data });
+    this._pendingActions.set(sessionId, queue);
+  }
+
+  _processPendingActions(sessionId, ws) {
+    const pending = this._pendingActions.get(sessionId) || [];
+    pending.forEach(action => {
+      if (action.type === 'send') {
+        ws.send(JSON.stringify(action.data));
+      } else {
+        this._sessions.get(sessionId).emitter.on(
+          action.data.eventType,
+          action.data.handler
+        );
+      }
+    });
+    this._pendingActions.delete(sessionId);
+  }
+
+  _validateSession(sessionId) {
+    if (!this._metadata.has(sessionId)) {
+      throw new Error('会话未初始化，请先提供senderId和receiverId');
+    }
+  }
+
+  _isReady(sessionId) {
+    const session = this._sessions.get(sessionId);
+    return session && session.ws.readyState === WebSocket.OPEN;
+  }
+}
+
+class SessionEmitter {
+  constructor(sessionId) {
+    this.sessionId = sessionId;
+    this.handlers = new Map();
+  }
+
+  on(eventType, handler) {
+    const handlers = this.handlers.get(eventType) || new Set();
+    handlers.add(handler);
+    this.handlers.set(eventType, handlers);
+  }
+
+  emit(eventType, data) {
+    const handlers = this.handlers.get(eventType);
+    if (handlers) {
+      handlers.forEach(handler => handler({ ...data, sessionId: this.sessionId }));
+    }
+  }
+
+  destroy() {
+    this.handlers.clear();
+  }
+}
+
+
