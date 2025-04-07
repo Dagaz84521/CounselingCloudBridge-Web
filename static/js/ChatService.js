@@ -9,7 +9,7 @@ export class ChatService {
   
     // 初始化WebSocket连接
     _setupConnection() {
-      this._connection = new WebSocket(`ws://localhost:8080/chat/${this.userId}`);
+      this._connection = new WebSocket(`ws://localhost:8090/chat/${this.userId}`);
       
       this._connection.onopen = () => {
         this._emitter.emit('connected');
