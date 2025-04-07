@@ -55,7 +55,7 @@
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-
+    font-size:20px;
 }
 
 .currentStatus::after {
@@ -63,17 +63,10 @@
     font-size: 2rem;
     font-weight: 600;
     color: #4a9cff;
-    margin-top: 10px;
-    
+    margin-top: 30px;
+    content: attr(data-value);
 }
 
-.currentStatus:nth-child(1)::after {
-    content: "35";
-}
-
-.currentStatus:nth-child(2)::after {
-    content: "6:12:30";
-}
 
 .currentConsultLineChart{
     width:60%;
@@ -123,7 +116,7 @@
 }
 
 .currentCounselCarrying::after {
-    content: "12353";
+    content: attr(data-value);
     font-size: 2.8rem;
     font-weight: 600;
 }
@@ -161,7 +154,7 @@
 }
 
 .supervisorAssistanceCarrying::after {
-    content: "12353";
+    content: attr(data-value);
     font-size: 2.8rem;
     font-weight: 600;
 }

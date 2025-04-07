@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/Administrator.css">
 
     <script src="../../static/js/roles/admin.js"></script>
-    <script type="text/javascript" src="../../static/js/Schedule.js"></script>
+    
 </head>
 
 <body style="display: flex;">
@@ -32,35 +32,35 @@
             <div class="nav-menu">
                 <div class="nav-item-activate">
                     <img src="../../static/image/homepageGreen.png">
-                    <a href="base.html" class="nav-link">
+                    <a href="/admin/base" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">首页</span>
                     </a>
                 </div>
 
                 <div class="nav-item">
                     <img src="../../static/image/logGrey.png">
-                    <a href="history.html" class="nav-link">
+                    <a href="/admin/history" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">咨询记录</span>
                     </a>
                 </div>
 
                 <div class="nav-item">
                     <img src="../../static/image/scheduleGrey.png">
-                    <a href="schedule.html" class="nav-link">
+                    <a href="/admin/schedule" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">排班表</span>
                     </a>
                 </div>
 
                 <div class="nav-item">
                     <img src="../../static/image/counselorGrey.png">
-                    <a href="counselorManagement.html" class="nav-link">
+                    <a href="/admin/counselorManagement" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">咨询师管理</span>
                     </a>
                 </div>
 
                 <div class="nav-item">
                     <img src="../../static/image/supervisorGrey.png">
-                    <a href="supervisorManagement.html" class="nav-link">
+                    <a href="/admin/supervisorManagement" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">督导管理</span>
                     </a>
                 </div>
@@ -72,14 +72,16 @@
         <div class="RightBar">
             <!-- 上方导航栏 -->
             <div class="navBar">
-                <div class="logo"></div>
-                <h2>Counseling Cloud Bridge</h2>
+                <div class="logo">
+                    <img src="../../static/image/icon.png">
+                </div>
+                <h2>心理咨询云桥 Counseling Cloud Bridge</h2>
             </div>
             <div class="contentBar">
                 <div class="currentConsult">
                     <div class="currentStatusCard">
-                        <div class="currentStatus">今日咨询数</div>
-                        <div class="currentStatus">今日咨询时长</div>
+                        <div class="currentStatus" data-type="sessions">今日咨询数</div>
+                        <div class="currentStatus" data-type="hours">今日咨询时长</div>
                     </div>
                     <div class="currentConsultLineChart">
                         <div class="platform-header">
@@ -99,7 +101,7 @@
                             </div>
                         </div>
 
-                        <div class="counselor-list">
+                        <div class="counselor-list" id = "counselor-list">
                             <!-- 示例数据（9个咨询师） -->
                             <div class="counselor-card">
                                 <div class="counselor-name">咨询师A</div>
@@ -148,14 +150,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="currentCounselCarrying"></div>
+                    <div class="currentCounselCarrying" data-type="currentSessions"></div>
 
                     <div class="supervisor-assistance">
                         <div class="platform-header">
                             <div class="header-title">在线督导</div>
                         </div>
 
-                        <div class="supervisor-list">
+                        <div class="supervisor-list" id = "supervisor-list">
                             <!-- 示例数据（9个咨询师） -->
                             <div class="counselor-card">
                                 <div class="counselor-name">咨询师A</div>
@@ -174,7 +176,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="supervisorAssistanceCarrying"></div>
+                    <div class="supervisorAssistanceCarrying" data-type="currentRequests"></div>
                 </div>
                 <div class="statisticData">
                     <div class="sevendaysData">

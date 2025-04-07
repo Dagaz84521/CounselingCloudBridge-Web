@@ -4,33 +4,33 @@ let recordsTable = document.querySelector('.records-table');
 document.addEventListener("DOMContentLoaded", async function () {
 
     try {
-        const response = await fetch('/api/counselor/history?name&date&page=1&pagesize=9', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'token': localStorage.getItem('authToken')
-          },
+        const response = await fetch('/api/counselor/history?name=\'\'&date=\'\'&page=1&pagesize=2', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem('authToken')
+            },
         });
-    
-        const res = await response.json();
-    
-        if (response.ok) {
-          // 解构数据结构
-          datas = res.data;
-          console.log(datas)
 
-          datas.forEach(data => {
-            addTableRow(data)
-          });
-    
-    
+        const res = await response.json();
+
+        if (response.ok) {
+            // 解构数据结构
+            datas = res.data;
+            console.log(datas)
+
+            datas.forEach(data => {
+                //addTableRow(data)
+            });
+
+
         } else {
-          console.log(res.message || '获取咨询历史记录失败');
+            console.log(res.message || '获取咨询历史记录失败');
         }
-    
-      } catch (error) {
+
+    } catch (error) {
         console.log('网络连接异常');
-      }
+    }
 
 })
 
@@ -40,7 +40,7 @@ function addTableRow(data) {
 
     // 客户姓名
     const clientCell = document.createElement('div');
-    clientCell.innerHTML = data.realName;
+    clientCell.innerHTML = data["client"];
 
     // 持续时间
     const durationCell = document.createElement('div');
@@ -50,7 +50,7 @@ function addTableRow(data) {
     // 日期
     const dateCell = document.createElement('div');
     dateCell.className = "date";
-    dateCell.textContent = formatDateFromArray(data.startTime);
+    dateCell.textContent = data.date;
 
     // 评分
     const ratingCell = document.createElement('div');
@@ -62,11 +62,16 @@ function addTableRow(data) {
     // 创建5个星标
     for (let i = 0; i < 5; i++) {
         const star = document.createElement('span');
-        star.className = i < data.rating ? "star-rating" : "star-rating-placeholder";
+        star.className = i < data.starRating ? "star-rating" : "star-rating-placeholder";
         star.textContent = "★";
         starContainer.appendChild(star);
     }
-
+    // 添加评价文本
+    const ratingText = document.createElement('span');
+    ratingText.className = "rating-text";
+    ratingText.textContent = data.evaluation;
+    // 组装元素
+    starContainer.appendChild(ratingText);
     ratingCell.appendChild(starContainer);
 
     // 操作按钮
@@ -86,7 +91,7 @@ function addTableRow(data) {
 
     // 事件监听逻辑
     detailBtn.addEventListener('click', function () {
-        const recordId = data.sessionId;
+        const recordId = this.dataset.id;
         // const recordData = getRecordDataById(recordId); // 获取对应数据
         createModal(modalData);
     });
@@ -100,18 +105,6 @@ function addTableRow(data) {
 
     recordsTable.appendChild(rowLine)
 }
-
-function formatDateFromArray(arr) {
-    // 处理月份偏移（输入的 4 表示实际 5 月，需要减 1）
-    const [year, month, day, hour, minute, second] = arr;
-    const date = new Date(year, month - 1, day, hour, minute, second);
-    
-    // 格式化成 YYYY-M-D HH:mm:ss
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ` +
-           `${date.getHours().toString().padStart(2, '0')}:` +
-           `${date.getMinutes().toString().padStart(2, '0')}:` +
-           `${date.getSeconds().toString().padStart(2, '0')}`;
-  }
 
 function createModal(data) {
     // 创建容器

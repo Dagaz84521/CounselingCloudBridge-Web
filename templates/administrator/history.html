@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/RightBar.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/Schedule.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/Records.css">
-    <script type="text/javascript" src="../../static/js/Schedule.js"></script>
+    <script type="text/javascript" src="../../static/js/history/admin_history.js"></script>
 </head>
 
 <body style="display: flex;">
@@ -31,35 +31,35 @@
             <div class="nav-menu">
                 <div class="nav-item">
                     <img src="../../static/image/homepageGrey.png">
-                    <a href="base.html" class="nav-link">
+                    <a href="/admin/base" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">首页</span>
                     </a>
                 </div>
 
                 <div class="nav-item-activate">
                     <img src="../../static/image/logGreen.png">
-                    <a href="history.html" class="nav-link">
+                    <a href="/admin/history" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">咨询记录</span>
                     </a>
                 </div>
 
                 <div class="nav-item">
                     <img src="../../static/image/scheduleGrey.png">
-                    <a href="schedule.html" class="nav-link">
+                    <a href="/admin/schedule" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">排班表</span>
                     </a>
                 </div>
 
                 <div class="nav-item">
                     <img src="../../static/image/counselorGrey.png">
-                    <a href="counselorManagement.html" class="nav-link">
+                    <a href="/admin/counselorManagement" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">咨询师管理</span>
                     </a>
                 </div>
 
                 <div class="nav-item">
                     <img src="../../static/image/supervisorGrey.png">
-                    <a href="supervisorManagement.html" class="nav-link">
+                    <a href="/admin/supervisorManagement" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">督导管理</span>
                     </a>
                 </div>
@@ -72,14 +72,16 @@
         <div class="RightBar">
             <!-- 上方导航栏 -->
             <div class="navBar">
-                <div class="logo"></div>
-                <h2>Counseling Cloud Bridge</h2>
+                <div class="logo">
+                    <img src="../../static/image/icon.png">
+                </div>
+                <h2>心理咨询云桥 Counseling Cloud Bridge</h2>
             </div>
             <div class="contentBar">
                 <div class="search-container">
                     <!-- 姓名搜索下拉 -->
                     <div class="search-group">
-                      <label class="search-label">搜索姓名</label>
+                      <label class="search-label"><i class="fas fa-search"></i>搜索姓名</label>
                       <select class="search-select">
                         <option value="" disabled selected>输入姓名进行搜索</option>
                         <option>张三</option>

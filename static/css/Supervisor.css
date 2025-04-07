@@ -66,8 +66,8 @@
     text-align: center;
     display: flex;
     align-items: center;
-    min-width: 200px;
-    width:50%;
+    min-width: 150px;
+    width:30%;
 }
 
 /* 状态指示器 */
@@ -103,7 +103,7 @@
     font: 600 16px/1.5 'Microsoft YaHei', sans-serif;
     color: #263238;
     margin: 5px 0;
-    min-width: 100px;
+    min-width: 80px;
 }
 
 .status-text {

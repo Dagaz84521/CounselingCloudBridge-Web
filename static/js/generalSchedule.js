@@ -1,8 +1,9 @@
 // 初始化日历
-function initCalendar() {
+async function initCalendar() {
     const today = new Date();
     const currentYear = today.getFullYear();
     const currentMonth = today.getMonth() + 1; // 月份从0开始需要+1
+    
     
     // 更新排班表标题
     updateCalendarTitle(currentYear, currentMonth);

@@ -10,9 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/Records.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/Modal.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/Counsel.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
     <script src="../../static/js/roles/counselor.js"></script>
-    <script type="text/javascript" src="../../static/js/Schedule.js"></script>
+    
 </head>
 
 <body style="display: flex;">
@@ -35,20 +36,20 @@
             <div class="nav-menu">
                 <div class="nav-item-activate">
                     <img src="../../static/image/homepageGreen.png">
-                    <a href="base.html" class="nav-link">
+                    <a href="/counselor/base" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">首页</span>
                     </a>
                 </div>
                 <div class="nav-item">
                     <img src="../../static/image/logGrey.png">
-                    <a href="history.html" class="nav-link">
+                    <a href="/counselor/history" class="nav-link">
                         <span class="leftOption" id="Option_bed_information">咨询记录</span>
                     </a>
                 </div>
             </div>
 
             <!-- 会话列表 -->
-            <div class="session-list">
+            <div class="session-list" id="session-list">
                 <span>会话列表</span>
                 <div class="user-item">
                     <a href="counsel.html" class="nav-link">
@@ -81,8 +82,10 @@
         <div class="RightBar">
             <!-- 上方导航栏 -->
             <div class="navBar">
-                <div class="logo"></div>
-                <h2>Counseling Cloud Bridge</h2>
+                <div class="logo">
+                    <img src="../../static/image/icon.png">
+                </div>
+                <h2>心理咨询云桥 Counseling Cloud Bridge</h2>
             </div>
             <div class="contentBar">
                 <div style="display: flex;">
@@ -124,13 +127,13 @@
                                     咨询设置
                                 </button>
                             </div>
-                            <div class="completedcounsel"></div>
+                            <div class="completedcounsel"data-type="totalSessions"></div>
                         </div>
 
                         <div class="currentStatusCard">
-                            <div class="currentStatus">今日咨询数</div>
-                            <div class="currentStatus">今日咨询时长</div>
-                            <div class="currentStatus">当前会话数</div>
+                            <div class="currentStatus" data-type="todaySessions">今日咨询数</div>
+                            <div class="currentStatus" data-type="todayHours">今日咨询时长</div>
+                            <div class="currentStatus" data-type="currentSessions">当前会话数</div>
                         </div>
                     </div>
                     <div class="ScheduleBar">
@@ -164,17 +167,17 @@
                 <div class="consultation-records" style="height:24vh">
                     <div class="records-header">
                         <h3>最近完成的咨询</h3>
-                        <a href="#" class="view-all">查看全部</a>
+                        <a href="/counselor/history" class="view-all">查看全部</a>
                     </div>
 
                     <div class="records-table">
                         <!-- 表头 -->
                         <div class="table-header">
-                            <div>咨询人</div>
-                            <div>咨询时长</div>
-                            <div>咨询日期</div>
-                            <div>咨询评级</div>
-                            <div>操作</div>
+                            <div><i class="fas fa-user-circle"></i>咨询人</div>
+                            <div><i class="fas fa-clock"></i>咨询时长</div>
+                            <div><i class="fas fa-calendar-check"></i>咨询日期</div>
+                            <div><i class="fas fa-grin-stars"></i>咨询评级</div>
+                            <div><i class="fas fa-th-large"></i>操作</div>
                         </div>
 
                         <!-- 更多数据行... -->
@@ -184,7 +187,6 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="../../static/js/sessionListDelete.js"></script>
-<script type="text/javascript" src="../../static/js/recentlyCompletedCounsel.js"></script>
+
 <script src="../static/js/auth/session.js"></script>
 </html>
