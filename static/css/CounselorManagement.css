@@ -78,7 +78,7 @@
     position: relative;
 }
 
-* 调整后的表格样式 */ .records-table {
+ 调整后的表格样式 */ .records-table {
     width: 100%;
     padding: 15px;
     background: white;
@@ -295,4 +295,14 @@
     justify-content: flex-end;
     gap: 12px;
     border-top: 1px solid #eee;
+}
+
+.star-rating {
+    color: #ffd700;
+    font-size: 1.1rem;
+}
+
+.star-rating-placeholder{
+    color: #e0e0e0; /* 浅灰色 */
+    font-size: 1.1rem;
 }

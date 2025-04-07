@@ -1,3 +1,5 @@
+import { ChatService } from './ChatService.js'
+
 // DOM元素引用
 const messageInput = document.getElementById('messageInput');
 const sendButton = document.getElementById('sendButton');
@@ -8,7 +10,7 @@ const requestMessageInput = document.getElementById('requestMessageInput');
 const requestMessageContainer = document.getElementById('requestMessageContainer');
 const requestSendButton = document.getElementById('requestSendButton');
 
-
+const sessionManager = new ChatService (2);
 
 
 // 发送消息功能
