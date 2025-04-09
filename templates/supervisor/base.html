@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/Supervisor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="../../static/js/roles/supervisor.js"></script>
-    <script type="text/javascript" src="../../static/js/Schedule.js"></script>
+    
 </head>
 
 <body style="display: flex;">
@@ -38,22 +38,11 @@
                         <span class="leftOption" id="Option_bed_information">首页</span>
                     </a>
                 </div>
-                <div class="nav-item">
-                    <img src="../../static/image/assistanceGrey.png">
-                    <span>求助记录</span>
-                </div>
-
-                <div class="nav-item">
-                    <img src="../../static/image/scheduleGrey.png">
-                    <a href="/supervisor/schedule" class="nav-link">
-                        <span class="leftOption" id="Option_bed_information">排班表</span>
-                    </a>
-                </div>
 
                 <div class="nav-item">
                     <img src="../../static/image/logGrey.png">
                     <a href="/supervisor/history" class="nav-link">
-                        <span class="leftOption" id="Option_bed_information">咨询记录</span>
+                        <span class="leftOption" id="Option_bed_information">求助记录</span>
                     </a>
                 </div>
             </div>
@@ -61,16 +50,7 @@
             <!-- 会话列表 -->
             <div class="session-list">
                 <span>会话列表</span>
-                <div class="user-item">
-                    <a href="counsel.html" class="nav-link">
-                        <span class="leftOption" id="Option_bed_information">咨询师A</span>
-                    </a>
-                    <span class="badge">2</span>
-                </div>
-                <div class="user-item">
-                    <span>咨询师B</span>
-                    <i class="fas fa-question-circle" style="color: #677489;"></i>
-                </div>
+
             </div>
         </div>
 
@@ -112,8 +92,8 @@
                             </div>
 
                             <div class="currentStatusCard">
-                                <div class="currentStatus">今日咨询数</div>
-                                <div class="currentStatus">今日咨询时长</div>
+                                <div class="currentStatus" data-type="todayRequests">今日咨询数</div>
+                                <div class="currentStatus" data-type="todayHours">今日咨询时长</div>
                             </div>
                         </div>
 
@@ -147,7 +127,7 @@
                                     <div class="counselor-card">...</div>
                                 </div>
                             </div>
-                            <div class="supervisor-completedcounsel"></div>
+                            <div class="supervisor-completedcounsel" data-type="totalRequests"></div>
                         </div>
 
                     </div>

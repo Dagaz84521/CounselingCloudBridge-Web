@@ -7,45 +7,54 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = '/login';
   }
 
-  try {
-    const response = await fetch('/api/counselor/home', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'token': localStorage.getItem('authToken')
-      },
+  async function fetchData() {
+    try {
+      const response = await fetch('/api/counselor/home', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'token': localStorage.getItem('authToken')
+        },
 
-    });
+      });
 
-    const res = await response.json();
-    if (response.ok) {
-      // 解构数据结构
-      data = res.data;
-      console.log(data)
+      const res = await response.json();
+      if (response.ok) {
+        // 解构数据结构
+        data = res.data;
+        console.log(data)
 
-      renderRecentSessions(data.recentSessions)
+        renderRecentSessions(data.recentSessions)
 
-      document.querySelector('[data-type="todayHours"]').dataset.value = data.counselorInfo['todayHours'];
-      document.querySelector('[data-type="todaySessions"]').dataset.value = data.counselorInfo['todaySessions']
-      document.querySelector('[data-type="totalSessions"]').dataset.value = data.counselorInfo['totalSessions']
-      document.querySelector('[data-type="currentSessions"]').dataset.value = data.counselorInfo['currentSessions']
+        document.querySelector('[data-type="todayHours"]').dataset.value = data.counselorInfo['todayHours'];
+        document.querySelector('[data-type="todaySessions"]').dataset.value = data.counselorInfo['todaySessions']
+        document.querySelector('[data-type="totalSessions"]').dataset.value = data.counselorInfo['totalSessions']
+        document.querySelector('[data-type="currentSessions"]').dataset.value = data.counselorInfo['currentSessions']
 
-      initCalendar(data.schedule)
+        initCalendar(data.schedule)
 
-      renderSessionList(data.sessionList)
+        renderSessionList(data.sessionList)
 
 
 
-    } else {
-      console.log(res.message || '认证失败');
+      } else {
+        console.log(res.message || '认证失败');
+      }
+    } catch (error) {
+      console.log('网络连接异常');
     }
-  } catch (error) {
-    console.log('网络连接异常');
   }
+  // 初始立即执行一次
+  fetchData();
+  // 每隔 60 秒重复执行
+  setInterval(fetchData, 30000);
 });
+
+
 
 function renderSessionList(sessionList) {
   listContainer = document.getElementById('session-list')
+  listContainer.innerHTML = '<span>会话列表</span>'
   sessionList.forEach(session => {
     line = addSessionItem(session);
     listContainer.appendChild(line)
@@ -56,6 +65,13 @@ function renderSessionList(sessionList) {
 function renderRecentSessions(recentSessions) {
 
   recordsTable = document.querySelector('.records-table');
+  recordsTable.innerHTML = '<div class="table-header">'+
+                            '<div><i class="fas fa-user-circle"></i>咨询人</div>'+
+                            '<div><i class="fas fa-clock"></i>咨询时长</div>'+
+                            '<div><i class="fas fa-calendar-check"></i>咨询日期</div>'+
+                            '<div><i class="fas fa-grin-stars"></i>咨询评级</div>'+
+                            '<div><i class="fas fa-th-large"></i>操作</div>'+
+                       '</div>'
   recentSessions.forEach(recentSession => {
 
     rowLine = addTableRow(recentSession)
@@ -152,9 +168,65 @@ function initCalendar(data) {
 
   // 更新排班表标题
   updateCalendarTitle(currentYear, currentMonth);
-
+  updateCalendarSubtitle(currentYear, currentMonth, data)
+  
   generateCalendar(currentYear, currentMonth, data);
   addCalendarInteractions();
+}
+
+function updateCalendarSubtitle(year, month, schedule) {
+  const subtitleElement = document.querySelector('.schedule-subtitle');
+  if (!subtitleElement) return;
+
+  // 星期映射表（中文 => 数字）
+  const weekDayMap = {
+    '周日': 0,
+    '周一': 1,
+    '周二': 2,
+    '周三': 3,
+    '周四': 4,
+    '周五': 5,
+    '周六': 6
+  };
+
+  // 转换中文星期到数字格式
+  const targetDays = schedule
+    .map(day => weekDayMap[day])
+    .filter(day => typeof day === 'number');
+
+  // 计算当月信息
+  const monthStart = new Date(year, month - 1, 1);
+  const monthEnd = new Date(year, month, 0);
+  const totalDays = monthEnd.getDate();
+
+  // 计算值班天数
+  let dutyDays = 0;
+  targetDays.forEach(weekday => {
+    dutyDays += calculateWeekdays(monthStart, monthEnd, weekday);
+  });
+
+  // 更新副标题内容
+  subtitleElement.textContent = 
+    `本月共${totalDays}天，需值班${dutyDays}天`;
+}
+
+// 辅助函数：计算指定周几在日期范围内的出现次数
+function calculateWeekdays(startDate, endDate, targetWeekday) {
+  let count = 0;
+  const date = new Date(startDate);
+  
+  // 找到第一个匹配的周几
+  while (date.getDay() !== targetWeekday && date <= endDate) {
+    date.setDate(date.getDate() + 1);
+  }
+
+  // 循环累加每周出现次数
+  while (date <= endDate) {
+    count++;
+    date.setDate(date.getDate() + 7);
+  }
+
+  return count;
 }
 
 // 新增更新标题函数
@@ -273,9 +345,11 @@ function addSessionItem(session) {
   itemLine.className = 'user-item-container';
 
   linkItem = document.createElement('a');
-  linkItem.href = "/counselor/chat/" + session.sessionId;
+  linkItem.href = "/counselor/session/" + session.sessionId + "/" + session.clientId;
   linkItem.className = "user-item-content";
   linkItem.draggable = false;
+  linkItem.dataset.sessionId = session.sessionId; // 对应 HTML 属性 data-session-id
+  linkItem.dataset.clientId = session.clientId;   // 对应 HTML 属性 data-client-id
 
   clientSpan = document.createElement('span');
   clientSpan.className = "user-item";
@@ -338,6 +412,8 @@ function setupSwipeHandlers(container) {
   link.addEventListener('dblclick', (e) => {
     e.preventDefault();
     window.location.href = link.href; // 执行跳转
+    localStorage.setItem('sessionId', link.dataset.sessionId);
+    localStorage.setItem('clientId', link.dataset.clientId);
   });
 
   // 单击延迟处理 (用于区分单击/滑动)

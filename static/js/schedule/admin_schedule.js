@@ -25,7 +25,7 @@ async function initCalendar() {
             // 解构数据结构
             data = res.data;
             
-
+            console.log(data)
         } else {
             console.log(res.message || '服务器发生错误，无法初始化排班表');
         }
@@ -123,7 +123,7 @@ async function handleCellClick(event) {
             if (response.ok) {
                 // 解构数据结构
                 currentData = res.data;
-                console.log(currentType)
+                console.log(currentData)
                 if (currentType == 'counselor')
                     renderStaffList(currentData.counselorList)
                 else
@@ -287,9 +287,9 @@ async function getTodayInformation() {
     const day = date.getDate()
     const weeks = new Array("周日", "周一", "周二", "周三", "周四", "周五", "周六");
     const nowWeek = weeks[new Date().getDay()];
-  
+    
     try {
-      const response = await fetch('/api/admin/schedule/' + (new Date().getDay() + 1), {
+      const response = await fetch('/api/admin/schedule/' + (new Date().getDay()), {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -301,7 +301,7 @@ async function getTodayInformation() {
       if (response.ok) {
         // 解构数据结构
         data = res.data;
-  
+        console.log(data)
       } else {
         console.log(res.message || '服务器发生错误，无法获取在线咨询师信息');
       }

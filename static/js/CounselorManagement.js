@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ).map(d => `周${d}`).join('、');
 
         currentRow.querySelector('[data-field="schedule"]').textContent = sortedDays;
-
+        
         try {
             const response =  await fetch('/api/admin/counselor', {
                 method: 'PUT',
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     schedule : sortedDays.split('、'),
                 }),
             });
-            
+            console.log(response)
             const res = await response.json();
             console.log(res)
             if (response.ok) {
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(res.message || '服务器发生错误，无法添加督导');
             }
         } catch (error) {
-            console.log("错误的请求")
+            console.log(error)
         }
         console.log('提交数据...');
 

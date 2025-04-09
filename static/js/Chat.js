@@ -10,14 +10,19 @@ const requestMessageInput = document.getElementById('requestMessageInput');
 const requestMessageContainer = document.getElementById('requestMessageContainer');
 const requestSendButton = document.getElementById('requestSendButton');
 
-const sessionManager = new ChatService (2);
+const sessionManager = new ChatService(localStorage.getItem('userId'));
 
+const endCounsel = document.getElementById('endCounsel')
 
 // 发送消息功能
 function sendMessage() {
     const content = messageInput.value.trim();
+    console.log(localStorage.getItem('userId'))
+
     if (!content) return;
     console.log("发送信息")
+
+    sessionManager.send(localStorage.getItem('sessionId'), localStorage.getItem('clientId'), content);
 
     const messageLine = document.createElement('div');
     messageLine.className = 'message-line';
@@ -42,7 +47,7 @@ function sendMessage() {
 
     // 清空输入框
     messageInput.value = '';
-    receiveClientMessage("作业写完没有")
+
     // 滚动到底部
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
@@ -87,24 +92,33 @@ messageInput.addEventListener('input', function () {
     this.style.height = this.scrollHeight + 'px';
 });
 
-function createAvatarDiv(){
+function createAvatarDiv() {
     const avater = document.createElement('div')
     avater.className = "message-avatar"
     const img = document.createElement("img")
-    img.alt="用户头像";
+    img.alt = "用户头像";
     avater.appendChild(img);
     return avater;
 }
 
-requestHelpButton.addEventListener('click',function(){
+requestHelpButton.addEventListener('click', function () {
     document.getElementById("supervisor-content").style.display = "flex"
-    document.getElementById("requestIcon").src= "../../static/image/lightGreen.png"
+    document.getElementById("requestIcon").src = "../../static/image/lightGreen.png"
     document.getElementById("requestHelp").style.color = "#1DABA6"
-    document.getElementById("requestHelp").innerHTML="请求督导中"
+    document.getElementById("requestHelp").innerHTML = "请求督导中"
 })
 
-function receiveClientMessage(message)
-{
+sessionManager.subscribe('message', (msg) => {
+    console.log(msg.sessionId);
+    console.log(msg.senderId);
+    console.log(msg.content);
+    console.log(msg.createdAt);
+    receiveClientMessage(msg.content, msg.createdAt)
+})
+
+function receiveClientMessage(content) {
+
+
     const messageLine = document.createElement('div');
     messageLine.className = 'message-line';
 
@@ -117,7 +131,7 @@ function receiveClientMessage(message)
 
     // 添加内容
     messageDiv.innerHTML = `
-             <div>${escapeHtml(message)}</div>
+             <div>${content}</div>
              <span class="timestamp">${getCurrentTime()}</span>
          `;
 
@@ -178,7 +192,7 @@ requestMessageInput.addEventListener('input', function () {
     this.style.height = this.scrollHeight + 'px';
 });
 
-function receiveSupervisorMessage(message){
+function receiveSupervisorMessage(message) {
     const messageLine = document.createElement('div');
     messageLine.className = 'message-line';
 
@@ -200,3 +214,135 @@ function receiveSupervisorMessage(message){
 
     requestMessageContainer.appendChild(messageLine);
 }
+
+
+endCounsel.addEventListener('click', () => {
+    var evaluationModal = document.getElementById('evaluation-modal');
+    evaluationModal.style.display = 'flex'
+    var sessionId = localStorage.getItem('sessionId')
+    var clientId = localStorage.getItem('clientId')
+
+    document.getElementById('evaluation-comfirm').addEventListener('click', async () => {
+        try {
+            const response = await fetch('/api/counselor/session/' + sessionId + '/' + clientId, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': localStorage.getItem('authToken')
+                },
+                body: JSON.stringify({
+                    type: document.getElementById('counsel-type').value,
+                    advice: document.getElementById('counsel-evaluation').value
+                }),
+            });
+
+            const res = await response.json();
+            console.log(res)
+
+            if (response.ok) {
+                // 解构数据结构
+                data = res.data;
+
+                console.log(data)
+            } else {
+                showError(res.message || '认证失败');
+            }
+        } catch (error) {
+            showError('网络连接异常');
+        }
+
+        evaluationModal.style.display = 'none'
+        document.getElementById('consult-process-content').style.display = 'none'
+        document.getElementById('consult-evaluations-content').style.display = 'flex'
+        document.getElementById('counsult-records-header').textContent = '咨询已结束'
+    })
+
+    document.getElementById('evaluation-cancel').addEventListener('click', () => {
+        evaluationModal.style.display = 'none'
+        document.getElementById('consult-process-content').style.display = 'none'
+        document.getElementById('consult-evaluations-content').style.display = 'flex'
+
+    })
+})
+
+
+function UpdateDuration(startTimeArray) {
+    const timeSpan = document.querySelector('.consult-duration span');
+
+    if (!timeSpan) return;
+
+    // 参数有效性检查
+    if (!Array.isArray(startTimeArray)|| startTimeArray.length < 6) {
+        timeSpan.textContent = '时间格式错误';
+        return;
+    }
+
+    var [year, month, day, hour, minute, second] = startTimeArray;
+    var startDate = new Date(year, month - 1, day, hour, minute, second);
+
+    var now = new Date();
+    var diffMs = now - startDate; // 毫秒差
+
+    // 处理未来时间或无效时间
+    if (diffMs < 0 || isNaN(diffMs)) {
+        timeSpan.textContent = '00:00:00';
+        return;
+    }
+
+    var totalSeconds = Math.floor(diffMs / 1000);
+    var hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+    var minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+    var seconds = String(totalSeconds % 60).padStart(2, '0');
+    timeSpan.textContent = `${hours}:${minutes}:${seconds}`;
+
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    var sessionId = localStorage.getItem('sessionId')
+    var clientId = localStorage.getItem('clientId')
+    const timeSpan = document.querySelector('.consult-duration span');
+
+    let timer;
+    let startTime = '';
+
+    // 如果找不到元素则直接返回
+    if (!timeSpan) {
+        console.error('找不到时间显示元素');
+        return;
+    }
+
+
+    try {
+        const response = await fetch('/api/counselor/session/' + sessionId + '/' + clientId, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem('authToken')
+            },
+        });
+
+        const res = await response.json();
+
+
+        if (response.ok) {
+            // 解构数据结构
+            var data = res.data;
+            console.log(data)
+            document.getElementById('user-name').textContent = data.realName
+            document.getElementById('user-phone').textContent = data.phoneNumber
+
+            startTime = data.startTime;
+            UpdateDuration(startTime);
+
+            // 启动计时器（使用箭头函数保持上下文）
+            timer = setInterval(() => UpdateDuration(startTime), 1000);
+        } else {
+            console.log(res.message || '认证失败');
+        }
+    } catch (error) {
+        console.log(error);
+        timeSpan.textContent = '--:--:--'; // 显示错误状态
+    }
+
+})
+
