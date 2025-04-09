@@ -3,7 +3,7 @@ let recordsTable = document.querySelector('.records-table');
 
 document.addEventListener("DOMContentLoaded", async function () {
     try {
-        const response = await fetch('/api/counselor/history?name&date&page=1&pagesize=2', {
+        const response = await fetch('/api/supervisor/history?name&date&page=1&pagesize=2', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
