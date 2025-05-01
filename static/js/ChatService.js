@@ -19,13 +19,35 @@ export class ChatService {
 
     this._connection.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      this._emitter.emit('message', {
-        roomId: data.roomId,
-        type : data.type,
+      console.log("WebSocket原始数据:", data);
+      // 创建基础事件对象
+      const baseEvent = {
+        type: data.type,
         senderId: data.senderId,
         content: data.content,
-        createdAt: data.createdAt,
-      });
+        createdAt: data.createdAt
+      };
+      // 条件分支处理
+      let finalEvent;
+      switch(data.type) {
+        case 'session':
+          finalEvent = {
+            ...baseEvent,
+            sessionId: data.sessionId // 确保服务器返回此字段
+          };
+          break;
+          
+        case 'request':
+          finalEvent = {
+            ...baseEvent,
+            requestId: data.requestId // 确保服务器返回此字段
+          };
+          break;
+        default:
+          console.warn('未知消息类型:', data.type);
+          return; // 不处理未知类型
+      }
+      this._emitter.emit('message', finalEvent);
     };
 
     this._connection.onclose = () => {
@@ -116,11 +138,34 @@ class SessionEmitter {
   }
 }
 
-// // 传入当前userId
+/ // 传入当前userId
 // chatService = new ChatService (senderId);
 // //注册接收消息时候的处理事件
+// 如果是request的聊天则数据结构为 
+// {
+//   requestId : data.requestId,
+//   type: data.type,
+//   senderId: data.senderId,
+//   content: data.content,
+//   createdAt: data.createdAt
+// };
 // chatService.subscribe('message', (msg) => {
-//   console.log(msg.roomId);       //这里roomId等于sessionId或者requestId
+//   console.log(msg.requestId);       
+//   console.log(msg.type);        
+//   console.log(msg.senderId);
+//   console.log(msg.content);
+//   console.log(msg.createdAt);
+// })
+// 如果是sessionId的聊天则数据结构为 
+// {
+//   sessionId : data.sessionId,
+//   type: data.type,
+//   senderId: data.senderId,
+//   content: data.content,
+//   createdAt: data.createdAt
+// };
+// chatService.subscribe('message', (msg) => {
+//   console.log(msg.sessionId);       //这里roomId等于sessionId或者requestId
 //   console.log(msg.type);         //这里type等于request或者session
 //   console.log(msg.senderId);
 //   console.log(msg.content);
